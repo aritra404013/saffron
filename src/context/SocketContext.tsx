@@ -17,41 +17,44 @@ const SocketContext = createContext<SocketContextType>({ socket: null });
 
 export const SocketProvider = ({ children }: { children: ReactNode }) => {
   const { isAuth } = useAppData();
-
   const socketRef = useRef<Socket | null>(null);
 
   useEffect(() => {
     if (!isAuth) {
-      socketRef.current?.disconnect();
-      socketRef.current = null;
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+        socketRef.current = null;
+      }
       return;
     }
 
-    if (socketRef.current) return;
+    if (socketRef.current?.connected) {
+      return;
+    }
 
-    const socket = io(BASE_URL, {
+    const newSocket = io(BASE_URL, {
       auth: {
         token: localStorage.getItem("token"),
       },
       transports: ["websocket"],
     });
 
-    socketRef.current = socket;
-
-    socket.on("connect", () => {
-      console.log("Socket Connected", socket.id);
+    newSocket.on("connect", () => {
+      console.log("Socket Connected", newSocket.id);
     });
 
-    socket.on("disconnect", () => {
+    newSocket.on("disconnect", () => {
       console.log("Socket Disconnected");
     });
 
-    socket.on("connect_error", (err) => {
+    newSocket.on("connect_error", (err) => {
       console.log("Socket Error:", err.message);
     });
 
+    socketRef.current = newSocket;
+
     return () => {
-      socket.disconnect();
+      newSocket.disconnect();
       socketRef.current = null;
     };
   }, [isAuth]);

@@ -54,10 +54,7 @@ const Cart = () => {
   return (
     <div className="page-pad">
       <div className="container" style={{ maxWidth: 640 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)", marginBottom: "var(--sp-8)" }}>
-          <span className="accent-line" />
-          <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.4rem", letterSpacing: "-.03em" }}>Your Cart</h1>
-        </div>
+        <h1 style={{ fontWeight: 800, fontSize: "1.5rem", marginBottom: "var(--sp-6)", letterSpacing: "-.03em" }}>Your Cart</h1>
 
         {/* Restaurant info */}
         <div className="card" style={{ padding: "var(--sp-4)", marginBottom: "var(--sp-4)" }}>
@@ -90,16 +87,16 @@ const Cart = () => {
                     disabled={isLoading}
                     onClick={() => changeQty(item._id, "dec")}
                     style={{ width: 30, height: 30, borderRadius: "50%", border: "1.5px solid var(--border)", background: "var(--surface-2)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: "1.1rem", color: "var(--text-2)", transition: "border-color var(--t1)" }}
-                    onMouseEnter={e => e.currentTarget.style.borderColor = "#F5A623"}
+                    onMouseEnter={e => e.currentTarget.style.borderColor = "var(--crimson)"}
                     onMouseLeave={e => e.currentTarget.style.borderColor = "var(--border)"}
                   >−</button>
                   <span style={{ fontWeight: 700, minWidth: 16, textAlign: "center" }}>
-                    {isLoading ? <span className="spinner" style={{ width: 14, height: 14, borderWidth: 2, borderTopColor: "#F5A623", borderColor: "rgba(226,55,68,.2)" }} /> : cartItem.quauntity}
+                    {isLoading ? <span className="spinner" style={{ width: 14, height: 14, borderWidth: 2, borderTopColor: "var(--crimson)", borderColor: "rgba(226,55,68,.2)" }} /> : cartItem.quauntity}
                   </span>
                   <button
                     disabled={isLoading}
                     onClick={() => changeQty(item._id, "inc")}
-                    style={{ width: 30, height: 30, borderRadius: "50%", background: "#F5A623", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: "1.1rem", color: "#fff" }}
+                    style={{ width: 30, height: 30, borderRadius: "50%", background: "var(--crimson)", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: "1.1rem", color: "#fff" }}
                   >+</button>
                 </div>
                 <p style={{ fontWeight: 700, minWidth: 64, textAlign: "right" }}>₹{item.price * cartItem.quauntity}</p>
@@ -130,7 +127,7 @@ const Cart = () => {
 
           <div style={{ borderTop: "1px solid var(--border)", paddingTop: "var(--sp-3)", display: "flex", justifyContent: "space-between", marginBottom: "var(--sp-5)", fontWeight: 800, fontSize: "1rem" }}>
             <span>Grand Total</span>
-            <span style={{ color: "#F5A623" }}>₹{grandTotal}</span>
+            <span style={{ color: "var(--crimson)" }}>₹{grandTotal}</span>
           </div>
 
           <button

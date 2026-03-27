@@ -62,7 +62,7 @@ const AddMenuItem = ({ onItemAdded }: { onItemAdded: () => void }) => {
         {/* Image upload */}
         <div>
           <label style={{ display: "block", fontWeight: 600, fontSize: ".82rem", color: "var(--text-2)", marginBottom: "var(--sp-2)" }}>
-            Item Photo <span style={{ color: "#F5A623" }}>*</span>
+            Item Photo <span style={{ color: "var(--crimson)" }}>*</span>
           </label>
           <label style={{
             display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
@@ -71,7 +71,7 @@ const AddMenuItem = ({ onItemAdded }: { onItemAdded: () => void }) => {
             background: preview ? "var(--success-bg)" : "var(--surface-2)",
             transition: "all var(--t2)", height: preview ? "auto" : 160,
           }}
-          onMouseEnter={e => { if (!preview) e.currentTarget.style.borderColor = "#F5A623"; }}
+          onMouseEnter={e => { if (!preview) e.currentTarget.style.borderColor = "var(--crimson)"; }}
           onMouseLeave={e => { if (!preview) e.currentTarget.style.borderColor = "var(--border)"; }}
           >
             {preview ? (
@@ -98,7 +98,7 @@ const AddMenuItem = ({ onItemAdded }: { onItemAdded: () => void }) => {
         {/* Name */}
         <div className="form-group">
           <label className="label">
-            Item Name <span style={{ color: "#F5A623" }}>*</span>
+            Item Name <span style={{ color: "var(--crimson)" }}>*</span>
           </label>
           <input
             className="input"
@@ -125,7 +125,7 @@ const AddMenuItem = ({ onItemAdded }: { onItemAdded: () => void }) => {
         {/* Price */}
         <div className="form-group">
           <label className="label">
-            Price (₹) <span style={{ color: "#F5A623" }}>*</span>
+            Price (₹) <span style={{ color: "var(--crimson)" }}>*</span>
           </label>
           <div style={{ position: "relative" }}>
             <span style={{
@@ -152,7 +152,7 @@ const AddMenuItem = ({ onItemAdded }: { onItemAdded: () => void }) => {
               <p style={{ fontWeight: 700, fontSize: ".9rem" }}>{name || "Item name"}</p>
               <p style={{ fontSize: ".75rem", color: "var(--text-3)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{description || "No description"}</p>
             </div>
-            {price && <span style={{ fontWeight: 800, color: "#F5A623", fontSize: ".95rem", flexShrink: 0 }}>₹{price}</span>}
+            {price && <span style={{ fontWeight: 800, color: "var(--crimson)", fontSize: ".95rem", flexShrink: 0 }}>₹{price}</span>}
           </div>
         )}
 

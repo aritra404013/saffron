@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/protectedRote";
@@ -19,14 +19,6 @@ import OrderPage from "./pages/OrderPage";
 import RiderDashboard from "./pages/RiderDashboard";
 import Admin from "./pages/Admin";
 
-// Navbar is only shown on these paths
-const NavbarWrapper = () => {
-  const location = useLocation();
-  const noNavPaths = ["/login", "/select-role"];
-  if (noNavPaths.includes(location.pathname)) return null;
-  return <Navbar />;
-};
-
 const App = () => {
   const { user, loading } = useAppData();
 
@@ -35,25 +27,25 @@ const App = () => {
       <div style={{
         minHeight: "100vh", display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center",
-        background: "#FAFAF9", gap: 16,
+        background: "linear-gradient(135deg, #fff 0%, #FFF5F5 100%)",
+        gap: "var(--sp-4)",
       }}>
         <div style={{
-          width: 52, height: 52, borderRadius: 14,
-          background: "linear-gradient(135deg, #F5A623, #D4891A)",
+          width: 56, height: 56, borderRadius: "var(--r-lg)",
+          background: "linear-gradient(135deg,var(--crimson),var(--crimson-dark))",
           display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: "1.4rem",
-          boxShadow: "0 8px 24px rgba(245,166,35,.35)",
+          fontSize: "1.8rem", boxShadow: "var(--shadow-red)",
           animation: "float 2s ease-in-out infinite",
-        }}>✦</div>
-        <p style={{ color: "#7A7A8C", fontSize: ".875rem", fontWeight: 600, fontFamily: "'Syne', sans-serif" }}>
-          Saffron Sky
+        }}>🍅</div>
+        <p style={{ color: "var(--text-3)", fontSize: ".9rem", fontWeight: 500 }}>
+          Finding restaurants near you...
         </p>
-        <div style={{ display: "flex", gap: 5 }}>
+        <div style={{ display: "flex", gap: 6 }}>
           {[0, 1, 2].map(i => (
             <div key={i} style={{
-              width: 6, height: 6, borderRadius: "50%",
-              background: "#F5A623",
-              animation: `livePulse 1.2s ease-in-out ${i * 0.2}s infinite`,
+              width: 8, height: 8, borderRadius: "50%",
+              background: "var(--crimson)", opacity: .3,
+              animation: `livePulse 1.2s ease-in-out ${i * .2}s infinite`,
             }} />
           ))}
         </div>
@@ -61,21 +53,19 @@ const App = () => {
     );
   }
 
-  // Role-based full-page apps (no router needed)
   if (user && user.role === "seller") return <Restaurant />;
   if (user && user.role === "rider") return <RiderDashboard />;
   if (user && user.role === "admin") return <Admin />;
 
   return (
     <BrowserRouter>
-      <NavbarWrapper />
+      <Navbar />
       <Routes>
         <Route element={<PublicRoute />}>
           <Route path="/login" element={<Login />} />
         </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Home />} />
-          <Route path="/select-role" element={<SelectRole />} />
           <Route path="/paymentsuccess/:paymentId" element={<PaymentSuccess />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/order/:id" element={<OrderPage />} />
@@ -84,6 +74,7 @@ const App = () => {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/restaurant/:id" element={<RestaurantPage />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/select-role" element={<SelectRole />} />
           <Route path="/account" element={<Account />} />
         </Route>
       </Routes>

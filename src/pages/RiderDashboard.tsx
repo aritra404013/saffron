@@ -17,7 +17,7 @@ interface IRider {
 }
 
 const RiderDashboard = () => {
-  const { user, setUser, setIsAuth } = useAppData();
+  const { user, setUser, setIsAuth, location, loadingLocation, city } = useAppData();
   const { socket } = useSocket();
   const [profile, setProfile] = useState<IRider | null>(null);
   const [loading, setLoading] = useState(true);
@@ -26,6 +26,7 @@ const RiderDashboard = () => {
   const [currentOrder, setCurrentOrder] = useState<IOrder | null>(null);
   const [audioUnlocked, setAudioUnlocked] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [refreshingLocation, setRefreshingLocation] = useState(false);
   // Registration form state
   const [phoneNumber, setPhoneNumber] = useState("");
   const [aadharNumber, setAadharNumber] = useState("");
@@ -44,16 +45,29 @@ const RiderDashboard = () => {
     } catch { toast.error("Tap again to enable sound"); }
   };
 
+  const socketRef = useRef(socket);
+  useEffect(() => { socketRef.current = socket; }, [socket]);
+
   useEffect(() => {
-    if (!socket) return;
+    const currentSocket = socketRef.current;
+    if (!currentSocket) return;
+    
     const onOrderAvailable = ({ orderId }: { orderId: string }) => {
+      console.log("📬 order:available received!", orderId);
+      toast.success("New order available! 🎉");
       setIncomingOrders(prev => prev.includes(orderId) ? prev : [...prev, orderId]);
       if (audioUnlocked && audioRef.current) { audioRef.current.currentTime = 0; audioRef.current.play().catch(() => { }); }
       setTimeout(() => setIncomingOrders(prev => prev.filter(id => id !== orderId)), 10000);
     };
-    socket.on("order:available", onOrderAvailable);
-    return () => { socket.off("order:available", onOrderAvailable); };
-  }, [socket, audioUnlocked]);
+    
+    currentSocket.on("order:available", onOrderAvailable);
+    console.log("✅ Socket listener registered for order:available");
+    
+    return () => { 
+      currentSocket.off("order:available", onOrderAvailable);
+      console.log("🔌 Socket listener removed");
+    };
+  }, [audioUnlocked]);
 
   const fetchProfile = async () => {
     try {
@@ -84,6 +98,38 @@ const RiderDashboard = () => {
       } catch (err: any) { toast.error(err?.response?.data?.message || "Failed"); }
       finally { setToggling(false); }
     });
+  };
+
+  const refreshLocation = () => {
+    if (!navigator.geolocation) {
+      toast.error("Location not supported");
+      return;
+    }
+    setRefreshingLocation(true);
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude } = pos.coords;
+        try {
+          if (profile?.isAvailble) {
+            await axios.patch(`${BASE_URL}/api/rider/toggle`, { isAvailble: true, latitude, longitude }, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } });
+          }
+          await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
+            { headers: { "Accept-Language": "en" } }
+          );
+          toast.success("Location updated");
+        } catch {
+          toast.error("Failed to update location");
+        } finally {
+          setRefreshingLocation(false);
+        }
+      },
+      () => {
+        toast.error("Failed to get location");
+        setRefreshingLocation(false);
+      },
+      { timeout: 10000 }
+    );
   };
 
   const handleSubmit = async () => {
@@ -151,7 +197,7 @@ const RiderDashboard = () => {
           <div className="form-group"><label className="label">Driving License</label><input className="input" type="text" placeholder="DL-XXXXXXXXX" value={drivingLicenseNumber} onChange={e => setDrivingLicenseNumber(e.target.value)} /></div>
           <div className="form-group">
             <label className="label">Profile Photo</label>
-            <label style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)", padding: "var(--sp-4)", border: "2px dashed var(--border)", borderRadius: "var(--r-md)", cursor: "pointer", transition: "border-color var(--t1)" }} onMouseEnter={e => e.currentTarget.style.borderColor = "#F5A623"} onMouseLeave={e => e.currentTarget.style.borderColor = "var(--border)"}>
+            <label style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)", padding: "var(--sp-4)", border: "2px dashed var(--border)", borderRadius: "var(--r-md)", cursor: "pointer", transition: "border-color var(--t1)" }} onMouseEnter={e => e.currentTarget.style.borderColor = "var(--crimson)"} onMouseLeave={e => e.currentTarget.style.borderColor = "var(--border)"}>
               <span style={{ fontSize: "1.5rem" }}>{image ? "✅" : "📷"}</span>
               <span style={{ fontSize: ".85rem", color: "var(--text-2)" }}>{image ? image.name : "Upload profile photo"}</span>
               <input type="file" accept="image/*" style={{ display: "none" }} onChange={e => setImage(e.target.files?.[0] || null)} />
@@ -172,7 +218,7 @@ const RiderDashboard = () => {
       <div style={{ background: "var(--charcoal)", padding: "var(--sp-5) var(--sp-5) var(--sp-8)", position: "sticky", top: 0, zIndex: 10 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--sp-5)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)" }}>
-            <div style={{ width: 40, height: 40, borderRadius: "50%", background: "linear-gradient(135deg,#F5A623,#D4891A)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, boxShadow: "0 3px 10px rgba(245,166,35,.35)" }}>
+            <div style={{ width: 40, height: 40, borderRadius: "50%", background: "linear-gradient(135deg,var(--crimson),var(--crimson-dark))", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800 }}>
               {user?.name?.[0]?.toUpperCase()}
             </div>
             <div>
@@ -204,6 +250,29 @@ const RiderDashboard = () => {
             <input type="checkbox" checked={profile.isAvailble} onChange={toggleAvailability} disabled={toggling} />
             <span className="switch-slider" />
           </label>
+        </div>
+
+        {/* Location display */}
+        <div style={{ marginTop: "var(--sp-3)", display: "flex", alignItems: "center", gap: "var(--sp-2)", padding: "var(--sp-3) var(--sp-4)", background: "rgba(255,255,255,.06)", borderRadius: "var(--r-md)", border: "1px solid rgba(255,255,255,.08)" }}>
+          <span style={{ fontSize: ".85rem" }}>📍</span>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            {loadingLocation || refreshingLocation ? (
+              <span style={{ color: "rgba(255,255,255,.5)", fontSize: ".75rem" }}>Fetching location...</span>
+            ) : location?.formattedAddress ? (
+              <span style={{ color: "rgba(255,255,255,.8)", fontSize: ".78rem", display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {city || location.formattedAddress}
+              </span>
+            ) : (
+              <span style={{ color: "rgba(255,255,255,.5)", fontSize: ".78rem" }}>Location unavailable</span>
+            )}
+          </div>
+          <button
+            onClick={refreshLocation}
+            disabled={refreshingLocation || loadingLocation}
+            style={{ padding: "var(--sp-1) var(--sp-2)", background: "rgba(255,255,255,.1)", border: "none", borderRadius: "var(--r-sm)", cursor: "pointer", color: "#fff", fontSize: ".7rem", opacity: refreshingLocation || loadingLocation ? 0.5 : 1 }}
+          >
+            {refreshingLocation ? "..." : "🔄"}
+          </button>
         </div>
 
         {/* Verification warning */}

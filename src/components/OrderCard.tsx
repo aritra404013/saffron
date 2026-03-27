@@ -68,7 +68,7 @@ const OrderCard = ({ order, onStatusUpdate }: { order: IOrder; onStatusUpdate?: 
       {/* Total */}
       <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 800, fontSize: ".9rem", borderTop: "1px solid var(--border)", paddingTop: "var(--sp-2)" }}>
         <span>Total</span>
-        <span style={{ color: "#F5A623" }}>₹{order.totalAmount}</span>
+        <span style={{ color: "var(--crimson)" }}>₹{order.totalAmount}</span>
       </div>
 
       {/* Payment */}
