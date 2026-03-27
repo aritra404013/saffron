@@ -27,24 +27,31 @@ const App = () => {
       <div style={{
         minHeight: "100vh", display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center",
-        background: "linear-gradient(135deg, #fff 0%, #FFF5F5 100%)",
-        gap: "var(--sp-4)",
+        background: "linear-gradient(135deg, var(--surface-warm) 0%, var(--surface-3) 100%)",
+        gap: "var(--sp-5)",
       }}>
         <div style={{
-          width: 56, height: 56, borderRadius: "var(--r-lg)",
-          background: "linear-gradient(135deg,var(--crimson),var(--crimson-dark))",
+          width: 64, height: 64, borderRadius: "var(--r-xl)",
+          background: "linear-gradient(135deg, var(--gold-light), var(--gold))",
           display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: "1.8rem", boxShadow: "var(--shadow-red)",
+          boxShadow: "var(--shadow-gold)",
           animation: "float 2s ease-in-out infinite",
-        }}>🍅</div>
-        <p style={{ color: "var(--text-3)", fontSize: ".9rem", fontWeight: 500 }}>
-          Finding restaurants near you...
-        </p>
+        }}>
+          <span style={{ fontFamily: "'Cormorant Garamond', serif", color: "#fff", fontWeight: 700, fontSize: "1.6rem" }}>S</span>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.1rem", color: "var(--text-2)", letterSpacing: ".06em" }}>
+            SAFFRON SKY
+          </p>
+          <p style={{ color: "var(--text-4)", fontSize: ".78rem", marginTop: 4, letterSpacing: ".04em" }}>
+            Finding restaurants near you...
+          </p>
+        </div>
         <div style={{ display: "flex", gap: 6 }}>
           {[0, 1, 2].map(i => (
             <div key={i} style={{
-              width: 8, height: 8, borderRadius: "50%",
-              background: "var(--crimson)", opacity: .3,
+              width: 6, height: 6, borderRadius: "50%",
+              background: "var(--gold)", opacity: .4,
               animation: `livePulse 1.2s ease-in-out ${i * .2}s infinite`,
             }} />
           ))}

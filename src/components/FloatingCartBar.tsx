@@ -49,13 +49,13 @@ const FloatingCartBar = () => {
         style={{ textDecoration: "none" }}
       >
         <div style={{
-          background: "linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%)",
+          background: "linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%)",
           borderRadius: 18,
           padding: "14px 18px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          boxShadow: "0 8px 32px rgba(226,55,68,.45), 0 2px 8px rgba(0,0,0,.15)",
+          boxShadow: "0 8px 32px rgba(201,146,42,.45), 0 2px 8px rgba(0,0,0,.15)",
           gap: "var(--sp-3)",
         }}>
           {/* Left — item count badge + restaurant */}

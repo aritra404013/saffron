@@ -35,7 +35,7 @@ const Orders = () => {
   return (
     <div className="page-pad">
       <div className="container" style={{ maxWidth: 680 }}>
-        <h1 style={{ fontWeight: 800, fontSize: "1.5rem", letterSpacing: "-.03em", marginBottom: "var(--sp-6)" }}>My Orders</h1>
+        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.8rem", letterSpacing: ".01em", marginBottom: "var(--sp-6)" }}>My Orders</h1>
 
         {loading ? (
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-3)" }}>
@@ -87,7 +87,7 @@ const Orders = () => {
                     </div>
                     <div style={{ marginTop: "var(--sp-3)", paddingTop: "var(--sp-3)", borderTop: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                       <span style={{ fontSize: ".75rem", color: "var(--text-3)" }}>#{order._id.slice(-8).toUpperCase()}</span>
-                      <span style={{ fontSize: ".78rem", color: "var(--crimson)", fontWeight: 600 }}>View Details →</span>
+                      <span style={{ fontSize: ".78rem", color: "var(--gold)", fontWeight: 600 }}>View Details →</span>
                     </div>
                   </div>
                 </Link>

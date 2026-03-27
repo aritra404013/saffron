@@ -40,8 +40,15 @@ const RestaurantCard = ({ id, name, image, distance, isOpen }: Props) => {
           )}
           {/* Open / Closed badge */}
           <div style={{ position: "absolute", top: "var(--sp-2)", left: "var(--sp-2)" }}>
-            <span className={`badge ${isOpen ? "badge-green" : "badge-gray"}`}>
-              {isOpen ? "● Open" : "● Closed"}
+            <span style={{
+              padding: "3px 10px", borderRadius: "var(--r-full)",
+              background: isOpen ? "rgba(22,163,74,.9)" : "rgba(80,80,80,.85)",
+              color: "#fff", fontSize: ".68rem", fontWeight: 700,
+              backdropFilter: "blur(8px)", letterSpacing: ".04em",
+              display: "flex", alignItems: "center", gap: 5,
+            }}>
+              <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#fff", display: "inline-block", animation: isOpen ? "livePulse 1.5s infinite" : "none" }} />
+              {isOpen ? "OPEN" : "CLOSED"}
             </span>
           </div>
           {/* Gradient overlay */}
@@ -64,8 +71,7 @@ const RestaurantCard = ({ id, name, image, distance, isOpen }: Props) => {
           {/* Rating mock */}
           <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-1)", marginTop: "var(--sp-2)" }}>
             <span style={{ color: "var(--gold)", fontSize: ".8rem" }}>★★★★</span>
-            <span style={{ color: "var(--text-4)", fontSize: ".75rem" }}>★</span>
-            <span style={{ color: "var(--text-3)", fontSize: ".75rem" }}>4.1</span>
+            <span style={{ color: "var(--text-4)", fontSize: ".75rem" }}>★</span>            <span style={{ color: "var(--text-3)", fontSize: ".75rem" }}>4.1</span>
           </div>
         </div>
       </div>

@@ -29,81 +29,95 @@ const Login = () => {
   });
 
   return (
-    <div style={{
-      minHeight: "100vh", display: "flex",
-      background: "var(--surface)",
-    }}>
-      {/* Left visual panel */}
-      <div className="hide-mobile" style={{
-        flex: 1,
-        background: "linear-gradient(145deg, var(--crimson-dark) 0%, #7C1D25 100%)",
-        display: "flex", flexDirection: "column",
-        alignItems: "center", justifyContent: "center",
-        padding: "var(--sp-16)", gap: "var(--sp-8)",
-        position: "relative", overflow: "hidden",
-      }}>
-        {/* Background blobs */}
-        <div style={{ position: "absolute", top: -80, left: -80, width: 320, height: 320, borderRadius: "50%", background: "rgba(255,255,255,.06)" }} />
-        <div style={{ position: "absolute", bottom: -60, right: -60, width: 240, height: 240, borderRadius: "50%", background: "rgba(255,255,255,.04)" }} />
+    <div style={{ minHeight: "100vh", position: "relative", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+      {/* Fullscreen food video — vertical clip, object-fit cover fills the screen */}
+      <video
+        autoPlay muted loop playsInline
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", zIndex: 0 }}
+      >
+        <source src="https://videos.pexels.com/video-files/7613581/7613581-hd_1080_1920_24fps.mp4" type="video/mp4" />
+      </video>
 
-        <div className="anim-fade-up" style={{ textAlign: "center", zIndex: 1 }}>
-          <div style={{ fontSize: "4rem", marginBottom: "var(--sp-4)", animation: "float 3s ease-in-out infinite" }}>🍅</div>
-          <h1 style={{ color: "#fff", fontSize: "2.5rem", fontWeight: 900, letterSpacing: "-.04em", lineHeight: 1.1, marginBottom: "var(--sp-4)" }}>
-            Food that makes<br />you smile
-          </h1>
-          <p style={{ color: "rgba(255,255,255,.72)", fontSize: "1rem", lineHeight: 1.6, maxWidth: 340 }}>
-            Order from the best restaurants near you. Fast, fresh, and delivered with love.
-          </p>
-        </div>
+      {/* Dark overlay */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(15,14,12,.9) 0%, rgba(26,24,20,.75) 50%, rgba(15,14,12,.88) 100%)", zIndex: 1 }} />
 
-        <div style={{ display: "flex", gap: "var(--sp-4)", zIndex: 1 }}>
-          {["🍕 Pizza", "🍔 Burgers", "🍜 Noodles", "🌮 Tacos"].map(item => (
-            <span key={item} style={{
-              padding: "var(--sp-2) var(--sp-3)",
-              background: "rgba(255,255,255,.15)", backdropFilter: "blur(8px)",
-              borderRadius: "var(--r-full)", color: "#fff",
-              fontSize: ".8rem", fontWeight: 600, border: "1px solid rgba(255,255,255,.2)",
-            }}>{item}</span>
-          ))}
-        </div>
-      </div>
+      {/* Gold orb accents */}
+      <div style={{ position: "absolute", top: "8%", right: "12%", width: 320, height: 320, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,146,42,.12) 0%, transparent 70%)", zIndex: 1, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: "12%", left: "8%", width: 220, height: 220, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,146,42,.08) 0%, transparent 70%)", zIndex: 1, pointerEvents: "none" }} />
 
-      {/* Right auth panel */}
-      <div style={{
-        flex: 1, display: "flex", alignItems: "center", justifyContent: "center",
-        padding: "var(--sp-8) var(--sp-6)",
-      }}>
-        <div className="anim-fade-up" style={{ width: "100%", maxWidth: 400 }}>
-          {/* Logo mobile */}
-          <div className="hide-desktop" style={{ display: "flex", alignItems: "center", gap: "var(--sp-2)", marginBottom: "var(--sp-8)" }}>
-            <div style={{ width: 34, height: 34, borderRadius: "var(--r-md)", background: "linear-gradient(135deg,var(--crimson),var(--crimson-dark))", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem" }}>🍅</div>
-            <span style={{ fontWeight: 800, fontSize: "1.1rem" }}>Saffron Sky</span>
+      {/* Content */}
+      <div style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: 460, padding: "var(--sp-6)" }}>
+        {/* Brand */}
+        <div className="anim-fade-up" style={{ textAlign: "center", marginBottom: "var(--sp-10)" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "var(--sp-3)", marginBottom: "var(--sp-5)" }}>
+            <div style={{
+              width: 52, height: 52, borderRadius: "var(--r-lg)",
+              background: "linear-gradient(135deg, var(--gold-light), var(--gold))",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              boxShadow: "var(--shadow-gold)",
+            }}>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", color: "#fff", fontWeight: 700, fontSize: "1.6rem" }}>S</span>
+            </div>
+            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.8rem", color: "#fff", letterSpacing: ".04em" }}>
+              Saffron Sky
+            </span>
           </div>
+          <div style={{ width: 40, height: 1, background: "linear-gradient(90deg, transparent, var(--gold-light), transparent)", margin: "0 auto var(--sp-6)" }} />
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", color: "#fff", fontSize: "clamp(1.9rem, 4vw, 2.6rem)", fontWeight: 600, lineHeight: 1.2, marginBottom: "var(--sp-3)" }}>
+            A Culinary Journey<br />Awaits You
+          </h1>
+          <p style={{ color: "rgba(255,255,255,.5)", fontSize: ".9rem", lineHeight: 1.7, letterSpacing: ".01em" }}>
+            Discover the finest restaurants, curated for your taste
+          </p>
+        </div>
 
-          <h2 style={{ fontSize: "1.75rem", fontWeight: 800, letterSpacing: "-.03em", marginBottom: "var(--sp-1)" }}>
-            Welcome back
-          </h2>
-          <p style={{ color: "var(--text-3)", fontSize: ".875rem", marginBottom: "var(--sp-8)" }}>
-            Sign in to continue ordering.
+        {/* Auth card */}
+        <div className="anim-fade-up" style={{
+          animationDelay: ".15s",
+          background: "rgba(255,255,255,.05)",
+          backdropFilter: "blur(32px) saturate(180%)",
+          WebkitBackdropFilter: "blur(32px) saturate(180%)",
+          border: "1px solid rgba(255,255,255,.1)",
+          borderRadius: "var(--r-2xl)",
+          padding: "var(--sp-8)",
+        }}>
+          <p style={{ color: "rgba(255,255,255,.4)", fontSize: ".7rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", textAlign: "center", marginBottom: "var(--sp-6)" }}>
+            Sign in to continue
           </p>
 
-          {/* Google button */}
           <button
             onClick={() => googleLogin()}
             style={{
               width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: "var(--sp-3)",
-              padding: "var(--sp-3)", border: "1.5px solid var(--border)", borderRadius: "var(--r-md)",
-              background: "var(--surface)", fontWeight: 600, fontSize: ".875rem", color: "var(--text-1)",
+              padding: "var(--sp-4) var(--sp-6)",
+              background: "rgba(255,255,255,.96)",
+              border: "none", borderRadius: "var(--r-full)",
+              fontWeight: 700, fontSize: ".9rem", color: "var(--ink)",
               cursor: "pointer",
-              transition: "border-color var(--t1), box-shadow var(--t1)",
+              boxShadow: "0 8px 32px rgba(0,0,0,.35)",
+              transition: "all var(--t2)",
+              letterSpacing: ".02em",
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--text-3)"; e.currentTarget.style.boxShadow = "var(--shadow-sm)"; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.boxShadow = "none"; }}
+            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 16px 48px rgba(0,0,0,.45)"; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,.35)"; }}
           >
-            <img src="https://www.google.com/favicon.ico" alt="" width={18} />
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
             Continue with Google
           </button>
+
+          <p style={{ textAlign: "center", marginTop: "var(--sp-5)", color: "rgba(255,255,255,.25)", fontSize: ".7rem", lineHeight: 1.6 }}>
+            By signing in you agree to our Terms of Service<br />and Privacy Policy
+          </p>
         </div>
+
+        <p className="anim-fade-up" style={{ animationDelay: ".3s", textAlign: "center", marginTop: "var(--sp-6)", color: "rgba(255,255,255,.25)", fontSize: ".68rem", letterSpacing: ".1em", textTransform: "uppercase" }}>
+          Premium Food Delivery · Est. 2024
+        </p>
       </div>
     </div>
   );

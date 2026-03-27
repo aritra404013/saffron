@@ -39,8 +39,10 @@ const Admin = () => {
       <div style={{ width: 220, background: "var(--charcoal)", display: "flex", flexDirection: "column", position: "sticky", top: 0, height: "100vh", overflowY: "auto", flexShrink: 0 }}>
         <div style={{ padding: "var(--sp-5) var(--sp-4)", borderBottom: "1px solid rgba(255,255,255,.08)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-2)" }}>
-            <div style={{ width: 34, height: 34, borderRadius: "var(--r-md)", background: "linear-gradient(135deg,var(--crimson),var(--crimson-dark))", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem" }}>🍅</div>
-            <span style={{ color: "#fff", fontWeight: 800, fontSize: ".9rem" }}>Saffron Sky admin</span>
+            <div style={{ width: 34, height: 34, borderRadius: "var(--r-md)", background: "linear-gradient(135deg, var(--gold-light), var(--gold))", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "var(--shadow-gold)" }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 7 7.5 7 12.5C7 15.538 9.239 18 12 18C14.761 18 17 15.538 17 12.5C17 10.5 15.5 9 15.5 9C15.5 9 15 11 13.5 11C12.5 11 12 10 12 9C12 6.5 13.5 4.5 13.5 4.5C13.5 4.5 12 2 12 2Z" fill="white" opacity="0.9"/><path d="M12 14C12 14 10 13 10 11.5C10 10.5 10.8 10 11.5 10.5C11.5 10.5 11 12 12 12.5C13 13 13.5 12 13.5 12C13.5 13.5 12 14 12 14Z" fill="white"/><circle cx="12" cy="20" r="2" fill="white" opacity="0.7"/></svg>
+            </div>
+            <span style={{ color: "#fff", fontWeight: 700, fontSize: ".9rem", fontFamily: "'Cormorant Garamond', serif", letterSpacing: ".04em" }}>Saffron Sky</span>
           </div>
         </div>
         <div style={{ padding: "var(--sp-4)", borderBottom: "1px solid rgba(255,255,255,.08)" }}>
@@ -49,7 +51,7 @@ const Admin = () => {
         </div>
         <nav style={{ flex: 1, padding: "var(--sp-3) var(--sp-2)" }}>
           {TABS.map(t => (
-            <button key={t.key} onClick={() => setTab(t.key)} style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)", width: "100%", padding: "var(--sp-3)", borderRadius: "var(--r-md)", marginBottom: "var(--sp-1)", background: tab === t.key ? "rgba(226,55,68,.2)" : "transparent", color: tab === t.key ? "var(--crimson-light)" : "rgba(255,255,255,.6)", border: "none", cursor: "pointer", fontSize: ".875rem", fontWeight: 600, textAlign: "left", transition: "all var(--t1)" }}
+            <button key={t.key} onClick={() => setTab(t.key)} style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)", width: "100%", padding: "var(--sp-3)", borderRadius: "var(--r-md)", marginBottom: "var(--sp-1)", background: tab === t.key ? "rgba(201,146,42,.2)" : "transparent", color: tab === t.key ? "var(--gold-light)" : "rgba(255,255,255,.6)", border: "none", cursor: "pointer", fontSize: ".875rem", fontWeight: 600, textAlign: "left", transition: "all var(--t1)" }}
               onMouseEnter={e => { if (tab !== t.key) { e.currentTarget.style.background = "rgba(255,255,255,.06)"; e.currentTarget.style.color = "#fff"; } }}
               onMouseLeave={e => { if (tab !== t.key) { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "rgba(255,255,255,.6)"; } }}
             >

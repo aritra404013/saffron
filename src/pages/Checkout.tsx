@@ -118,7 +118,7 @@ const Checkout = () => {
   return (
     <div className="page-pad">
       <div className="container" style={{ maxWidth: 700 }}>
-        <h1 style={{ fontWeight: 800, fontSize: "1.5rem", letterSpacing: "-.03em", marginBottom: "var(--sp-6)" }}>Checkout</h1>
+        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.8rem", letterSpacing: ".01em", marginBottom: "var(--sp-6)" }}>Checkout</h1>
 
         <div style={{ display: "grid", gap: "var(--sp-4)" }}>
           {/* Order summary */}

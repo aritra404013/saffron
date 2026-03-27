@@ -103,17 +103,17 @@ const OrderPage = () => {
                   {i < STEPS.filter(s => s.key !== "cancelled").length - 1 && (
                     <div style={{
                       position: "absolute", left: 16, top: 32, bottom: 0, width: 2,
-                      background: done ? "var(--crimson)" : "var(--border)",
+                      background: done ? "var(--gold)" : "var(--border)",
                       transition: "background .5s",
                     }} />
                   )}
                   {/* Circle */}
                   <div style={{
                     width: 34, height: 34, borderRadius: "50%", flexShrink: 0, zIndex: 1,
-                    background: done ? (active ? "var(--crimson)" : "var(--success)") : "var(--surface-3)",
+                    background: done ? (active ? "var(--gold)" : "var(--success)") : "var(--surface-3)",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     fontSize: ".9rem",
-                    boxShadow: active ? "0 0 0 4px rgba(226,55,68,.2)" : "none",
+                    boxShadow: active ? "0 0 0 4px rgba(201,146,42,.2)" : "none",
                     transition: "all .3s",
                   }}>
                     {done ? (active ? step.icon : "✓") : step.icon}
@@ -171,7 +171,7 @@ const OrderPage = () => {
             </div>
           ))}
           <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 800, fontSize: "1rem", marginTop: "var(--sp-2)", paddingTop: "var(--sp-2)", borderTop: "1px solid var(--border)" }}>
-            <span>Total</span><span style={{ color: "var(--crimson)" }}>₹{order.totalAmount}</span>
+            <span>Total</span><span style={{ color: "var(--gold)" }}>₹{order.totalAmount}</span>
           </div>
           <div style={{ marginTop: "var(--sp-3)", display: "flex", gap: "var(--sp-3)", fontSize: ".78rem", color: "var(--text-3)" }}>
             <span>Payment: <b style={{ color: "var(--text-1)" }}>{order.paymentMethod.toUpperCase()}</b></span>

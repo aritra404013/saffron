@@ -54,7 +54,7 @@ const Cart = () => {
   return (
     <div className="page-pad">
       <div className="container" style={{ maxWidth: 640 }}>
-        <h1 style={{ fontWeight: 800, fontSize: "1.5rem", marginBottom: "var(--sp-6)", letterSpacing: "-.03em" }}>Your Cart</h1>
+        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.8rem", letterSpacing: ".01em", marginBottom: "var(--sp-6)" }}>Your Cart</h1>
 
         {/* Restaurant info */}
         <div className="card" style={{ padding: "var(--sp-4)", marginBottom: "var(--sp-4)" }}>
@@ -127,7 +127,7 @@ const Cart = () => {
 
           <div style={{ borderTop: "1px solid var(--border)", paddingTop: "var(--sp-3)", display: "flex", justifyContent: "space-between", marginBottom: "var(--sp-5)", fontWeight: 800, fontSize: "1rem" }}>
             <span>Grand Total</span>
-            <span style={{ color: "var(--crimson)" }}>₹{grandTotal}</span>
+            <span style={{ fontWeight: 800, color: "var(--gold)" }}>₹{grandTotal}</span>
           </div>
 
           <button

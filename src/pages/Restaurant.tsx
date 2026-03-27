@@ -73,8 +73,10 @@ const Restaurant = () => {
       }}>
         {/* Logo */}
         <div style={{ padding: "var(--sp-5) var(--sp-4)", display: "flex", alignItems: "center", gap: "var(--sp-3)", borderBottom: "1px solid rgba(255,255,255,.08)" }}>
-          <div style={{ width: 36, height: 36, borderRadius: "var(--r-md)", background: "linear-gradient(135deg,var(--crimson),var(--crimson-dark))", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0 }}>🍅</div>
-          {sidebarOpen && <span style={{ fontWeight: 800, fontSize: ".95rem", letterSpacing: "-.02em" }}>Saffron Sky seller</span>}
+          <div style={{ width: 36, height: 36, borderRadius: "var(--r-md)", background: "linear-gradient(135deg, var(--gold-light), var(--gold))", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, boxShadow: "var(--shadow-gold)" }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 7 7.5 7 12.5C7 15.538 9.239 18 12 18C14.761 18 17 15.538 17 12.5C17 10.5 15.5 9 15.5 9C15.5 9 15 11 13.5 11C12.5 11 12 10 12 9C12 6.5 13.5 4.5 13.5 4.5C13.5 4.5 12 2 12 2Z" fill="white" opacity="0.9"/><path d="M12 14C12 14 10 13 10 11.5C10 10.5 10.8 10 11.5 10.5C11.5 10.5 11 12 12 12.5C13 13 13.5 12 13.5 12C13.5 13.5 12 14 12 14Z" fill="white"/><circle cx="12" cy="20" r="2" fill="white" opacity="0.7"/></svg>
+          </div>
+          {sidebarOpen && <span style={{ fontWeight: 700, fontSize: ".95rem", letterSpacing: ".02em", fontFamily: "'Cormorant Garamond', serif" }}>Saffron Sky</span>}
         </div>
 
         {/* Restaurant name */}
@@ -96,8 +98,8 @@ const Restaurant = () => {
               display: "flex", alignItems: "center", gap: "var(--sp-3)",
               width: "100%", padding: sidebarOpen ? "var(--sp-3) var(--sp-3)" : "var(--sp-3)",
               borderRadius: "var(--r-md)", marginBottom: "var(--sp-1)",
-              background: tab === item.key ? "rgba(226,55,68,.2)" : "transparent",
-              color: tab === item.key ? "var(--crimson-light)" : "rgba(255,255,255,.6)",
+              background: tab === item.key ? "rgba(201,146,42,.2)" : "transparent",
+              color: tab === item.key ? "var(--gold-light)" : "rgba(255,255,255,.6)",
               border: "none", cursor: "pointer", textAlign: "left",
               transition: "all var(--t1)",
               justifyContent: sidebarOpen ? "flex-start" : "center",
@@ -138,7 +140,7 @@ const Restaurant = () => {
             <span className={`badge ${restaurant.isVerified ? "badge-green" : "badge-gold"}`}>
               {restaurant.isVerified ? "✓ Verified" : "⏳ Pending"}
             </span>
-            <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg,var(--crimson),var(--crimson-dark))", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: ".85rem" }}>
+            <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg, var(--gold-light), var(--gold))", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: ".85rem", boxShadow: "var(--shadow-gold)" }}>
               {user?.name?.[0]?.toUpperCase() || "S"}
             </div>
           </div>

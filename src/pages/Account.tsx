@@ -15,22 +15,24 @@ const Account = () => {
   return (
     <div className="page-pad">
       <div className="container" style={{ maxWidth: 480 }}>
-        <h1 style={{ fontWeight: 800, fontSize: "1.5rem", letterSpacing: "-.03em", marginBottom: "var(--sp-6)" }}>Account</h1>
+        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.8rem", letterSpacing: ".01em", marginBottom: "var(--sp-6)" }}>Account</h1>
 
         {/* Profile card */}
-        <div className="card anim-fade-up" style={{ padding: "var(--sp-6)", textAlign: "center", marginBottom: "var(--sp-4)" }}>
+        <div className="card anim-fade-up" style={{ padding: "var(--sp-8)", textAlign: "center", marginBottom: "var(--sp-4)", background: "linear-gradient(135deg, var(--surface-warm), var(--surface))" }}>
           <div style={{
-            width: 72, height: 72, borderRadius: "50%", margin: "0 auto var(--sp-4)",
-            background: "linear-gradient(135deg,var(--crimson),var(--crimson-dark))",
+            width: 80, height: 80, borderRadius: "50%", margin: "0 auto var(--sp-4)",
+            background: "linear-gradient(135deg, var(--gold-light), var(--gold))",
             display: "flex", alignItems: "center", justifyContent: "center",
-            color: "#fff", fontWeight: 800, fontSize: "1.8rem",
-            boxShadow: "var(--shadow-red)",
+            color: "#fff", fontWeight: 800, fontSize: "2rem",
+            boxShadow: "var(--shadow-gold)",
           }}>
-            {user?.name?.[0]?.toUpperCase() || "U"}
+            {user?.image
+              ? <img src={user.image} alt="" style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }} />
+              : user?.name?.[0]?.toUpperCase() || "U"}
           </div>
-          <h2 style={{ fontWeight: 700, fontSize: "1.2rem", marginBottom: "var(--sp-1)" }}>{user?.name}</h2>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.4rem", marginBottom: "var(--sp-1)" }}>{user?.name}</h2>
           <p style={{ color: "var(--text-3)", fontSize: ".875rem" }}>{user?.email}</p>
-          <span className="badge badge-green" style={{ margin: "var(--sp-3) auto 0", display: "inline-flex" }}>
+          <span className="badge badge-gold" style={{ margin: "var(--sp-3) auto 0", display: "inline-flex" }}>
             {user?.role || "customer"}
           </span>
         </div>
@@ -52,7 +54,7 @@ const Account = () => {
 
         <button
           onClick={logout}
-          style={{ width: "100%", display: "flex", alignItems: "center", gap: "var(--sp-3)", padding: "var(--sp-4) var(--sp-5)", background: "var(--error-bg)", borderRadius: "var(--r-xl)", border: "1.5px solid rgba(226,55,68,.2)", fontWeight: 700, color: "var(--crimson)", cursor: "pointer", fontSize: ".9rem", marginTop: "var(--sp-2)" }}
+          style={{ width: "100%", display: "flex", alignItems: "center", gap: "var(--sp-3)", padding: "var(--sp-4) var(--sp-5)", background: "var(--error-bg)", borderRadius: "var(--r-xl)", border: "1.5px solid rgba(196,45,57,.2)", fontWeight: 700, color: "var(--crimson)", cursor: "pointer", fontSize: ".9rem", marginTop: "var(--sp-2)" }}
         >
           <span>🚪</span> Sign Out
         </button>
