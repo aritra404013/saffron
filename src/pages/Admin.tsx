@@ -7,7 +7,7 @@ import { useAppData } from "../context/AppContext";
 
 const TABS = [
   { key: "restaurant" as const, icon: "🍽️", label: "Restaurants" },
-  { key: "rider" as const,      icon: "🛵", label: "Riders" },
+  { key: "rider" as const, icon: "🛵", label: "Riders" },
 ];
 
 const Admin = () => {
@@ -21,7 +21,7 @@ const Admin = () => {
     try {
       const [rRes, ridRes] = await Promise.all([
         axios.get(`${BASE_URL}/api/admin/restaurant/pending`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }),
-        axios.get(`${BASE_URL}/api/admin/rider/pending`,      { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }),
+        axios.get(`${BASE_URL}/api/admin/rider/pending`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }),
       ]);
       setRestaurants(rRes.data.restaurants);
       setRiders(ridRes.data.riders);
@@ -39,8 +39,8 @@ const Admin = () => {
       <div style={{ width: 220, background: "var(--charcoal)", display: "flex", flexDirection: "column", position: "sticky", top: 0, height: "100vh", overflowY: "auto", flexShrink: 0 }}>
         <div style={{ padding: "var(--sp-5) var(--sp-4)", borderBottom: "1px solid rgba(255,255,255,.08)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-2)" }}>
-            <div style={{ width: 34, height: 34, borderRadius: "var(--r-md)", background: "linear-gradient(135deg,var(--crimson),var(--crimson-dark))", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem" }}>🍅</div>
-            <span style={{ color: "#fff", fontWeight: 800, fontSize: ".9rem" }}>tomato admin</span>
+            <div style={{ width: 34, height: 34, borderRadius: "var(--r-md)", background: "linear-gradient(135deg,#F5A623,#D4891A)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".9rem", boxShadow: "0 3px 10px rgba(245,166,35,.35)" }}>✦</div>
+            <span style={{ fontFamily: "'Syne',sans-serif", color: "#fff", fontWeight: 800, fontSize: ".9rem" }}>Saffron Sky admin</span>
           </div>
         </div>
         <div style={{ padding: "var(--sp-4)", borderBottom: "1px solid rgba(255,255,255,.08)" }}>
@@ -49,7 +49,7 @@ const Admin = () => {
         </div>
         <nav style={{ flex: 1, padding: "var(--sp-3) var(--sp-2)" }}>
           {TABS.map(t => (
-            <button key={t.key} onClick={() => setTab(t.key)} style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)", width: "100%", padding: "var(--sp-3)", borderRadius: "var(--r-md)", marginBottom: "var(--sp-1)", background: tab === t.key ? "rgba(226,55,68,.2)" : "transparent", color: tab === t.key ? "var(--crimson-light)" : "rgba(255,255,255,.6)", border: "none", cursor: "pointer", fontSize: ".875rem", fontWeight: 600, textAlign: "left", transition: "all var(--t1)" }}
+            <button key={t.key} onClick={() => setTab(t.key)} style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)", width: "100%", padding: "var(--sp-3)", borderRadius: "var(--r-md)", marginBottom: "var(--sp-1)", background: tab === t.key ? "rgba(245,166,35,.15)" : "transparent", color: tab === t.key ? "#F5A623" : "rgba(255,255,255,.6)", border: tab === t.key ? "1px solid rgba(245,166,35,.2)" : "1px solid transparent", cursor: "pointer", fontSize: ".875rem", fontWeight: 600, textAlign: "left", transition: "all var(--t1)", fontFamily: "inherit" }}
               onMouseEnter={e => { if (tab !== t.key) { e.currentTarget.style.background = "rgba(255,255,255,.06)"; e.currentTarget.style.color = "#fff"; } }}
               onMouseLeave={e => { if (tab !== t.key) { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "rgba(255,255,255,.6)"; } }}
             >
@@ -80,8 +80,8 @@ const Admin = () => {
         {/* Stats */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "var(--sp-4)", marginBottom: "var(--sp-6)" }}>
           {[
-            { icon: "🍽️", label: "Pending Restaurants", value: restaurants.length, color: "var(--crimson)" },
-            { icon: "🛵", label: "Pending Riders",      value: riders.length,      color: "var(--success)" },
+            { icon: "🍽️", label: "Pending Restaurants", value: restaurants.length, color: "#F5A623" },
+            { icon: "🛵", label: "Pending Riders", value: riders.length, color: "var(--success)" },
           ].map(stat => (
             <div key={stat.label} className="card" style={{ padding: "var(--sp-5)" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)" }}>

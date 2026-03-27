@@ -65,7 +65,7 @@ const RestaurantPage = () => {
       {/* Hero Banner */}
       <div style={{
         position: "relative", height: 260, borderRadius: "var(--r-xl)", overflow: "hidden",
-        marginBottom: "var(--sp-6)", background: "var(--charcoal-3)",
+        marginBottom: "var(--sp-6)", background: "#26262F",
       }}>
         {restaurant.image ? (
           <img src={restaurant.image} alt={restaurant.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />

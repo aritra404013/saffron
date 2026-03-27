@@ -18,15 +18,15 @@ const PaymentSuccess = () => {
     <div style={{
       minHeight: "100vh", display: "flex", flexDirection: "column",
       alignItems: "center", justifyContent: "center",
-      background: "linear-gradient(135deg, #fff 0%, #FFF5F5 100%)",
+      background: "linear-gradient(135deg, #FAFAF9 0%, #FFF8EE 100%)",
       padding: "var(--sp-8)",
     }}>
       <div className="anim-fade-up" style={{ textAlign: "center", maxWidth: 420 }}>
         <div style={{
-          width: 100, height: 100, borderRadius: "50%", margin: "0 auto var(--sp-6)",
-          background: "linear-gradient(135deg, var(--crimson), var(--crimson-dark))",
+          width: 96, height: 96, borderRadius: "50%", margin: "0 auto var(--sp-6)",
+          background: "linear-gradient(135deg, #F5A623, #D4891A)",
           display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: "2.8rem", boxShadow: "var(--shadow-red)",
+          fontSize: "2.6rem", boxShadow: "0 8px 32px rgba(245,166,35,.4)",
           animation: "pop .5s var(--ease) both",
         }}>💳</div>
         <h1 style={{ fontWeight: 900, fontSize: "2rem", letterSpacing: "-.04em", marginBottom: "var(--sp-3)" }}>

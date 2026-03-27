@@ -151,7 +151,7 @@ const RiderDashboard = () => {
           <div className="form-group"><label className="label">Driving License</label><input className="input" type="text" placeholder="DL-XXXXXXXXX" value={drivingLicenseNumber} onChange={e => setDrivingLicenseNumber(e.target.value)} /></div>
           <div className="form-group">
             <label className="label">Profile Photo</label>
-            <label style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)", padding: "var(--sp-4)", border: "2px dashed var(--border)", borderRadius: "var(--r-md)", cursor: "pointer", transition: "border-color var(--t1)" }} onMouseEnter={e => e.currentTarget.style.borderColor = "var(--crimson)"} onMouseLeave={e => e.currentTarget.style.borderColor = "var(--border)"}>
+            <label style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)", padding: "var(--sp-4)", border: "2px dashed var(--border)", borderRadius: "var(--r-md)", cursor: "pointer", transition: "border-color var(--t1)" }} onMouseEnter={e => e.currentTarget.style.borderColor = "#F5A623"} onMouseLeave={e => e.currentTarget.style.borderColor = "var(--border)"}>
               <span style={{ fontSize: "1.5rem" }}>{image ? "✅" : "📷"}</span>
               <span style={{ fontSize: ".85rem", color: "var(--text-2)" }}>{image ? image.name : "Upload profile photo"}</span>
               <input type="file" accept="image/*" style={{ display: "none" }} onChange={e => setImage(e.target.files?.[0] || null)} />
@@ -172,7 +172,7 @@ const RiderDashboard = () => {
       <div style={{ background: "var(--charcoal)", padding: "var(--sp-5) var(--sp-5) var(--sp-8)", position: "sticky", top: 0, zIndex: 10 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--sp-5)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)" }}>
-            <div style={{ width: 40, height: 40, borderRadius: "50%", background: "linear-gradient(135deg,var(--crimson),var(--crimson-dark))", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800 }}>
+            <div style={{ width: 40, height: 40, borderRadius: "50%", background: "linear-gradient(135deg,#F5A623,#D4891A)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, boxShadow: "0 3px 10px rgba(245,166,35,.35)" }}>
               {user?.name?.[0]?.toUpperCase()}
             </div>
             <div>

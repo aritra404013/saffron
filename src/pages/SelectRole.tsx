@@ -9,25 +9,28 @@ const ROLES = [
     role: "customer",
     icon: "🛒",
     title: "Customer",
-    desc: "Order food from your favorite restaurants, track deliveries in real-time.",
-    accent: "var(--crimson)",
-    bg: "var(--error-bg)",
+    desc: "Order food from your favourite restaurants and track deliveries in real-time.",
+    accent: "#F5A623",
+    borderHover: "rgba(245,166,35,.4)",
+    glowHover: "rgba(245,166,35,.08)",
   },
   {
     role: "seller",
     icon: "🍽️",
     title: "Restaurant",
     desc: "Manage your restaurant, menu, and incoming orders from a powerful dashboard.",
-    accent: "#7C3AED",
-    bg: "#EDE9FE",
+    accent: "#8B5CF6",
+    borderHover: "rgba(139,92,246,.4)",
+    glowHover: "rgba(139,92,246,.06)",
   },
   {
     role: "rider",
     icon: "🛵",
     title: "Rider",
     desc: "Deliver orders, track earnings, and manage your schedule on the go.",
-    accent: "var(--success)",
-    bg: "var(--success-bg)",
+    accent: "#10B981",
+    borderHover: "rgba(16,185,129,.4)",
+    glowHover: "rgba(16,185,129,.06)",
   },
 ];
 
@@ -42,7 +45,6 @@ const SelectRole = () => {
         { role },
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );
-      // Save fresh token so backend sees the updated role immediately
       if (data.token) localStorage.setItem("token", data.token);
       setUser(data.user);
       toast.success(`Welcome as ${role}!`);
@@ -56,56 +58,79 @@ const SelectRole = () => {
     <div style={{
       minHeight: "100vh", display: "flex", flexDirection: "column",
       alignItems: "center", justifyContent: "center",
-      background: "linear-gradient(135deg, #fff 0%, #FFF5F5 100%)",
-      padding: "var(--sp-8) var(--sp-4)",
+      background: "#FAFAF9",
+      padding: "40px 16px",
     }}>
-      <div className="anim-fade-up" style={{ textAlign: "center", marginBottom: "var(--sp-10)" }}>
-        <div style={{ fontSize: "2.5rem", marginBottom: "var(--sp-4)" }}>👋</div>
-        <h1 style={{ fontSize: "2rem", fontWeight: 900, letterSpacing: "-.04em", marginBottom: "var(--sp-2)" }}>
-          How will you use tomato?
+      {/* Logo */}
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 48 }}>
+        <div style={{ width: 36, height: 36, borderRadius: 10, background: "linear-gradient(135deg, #F5A623, #D4891A)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", boxShadow: "0 4px 14px rgba(245,166,35,.35)" }}>✦</div>
+        <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.15rem", color: "#111118", letterSpacing: "-.03em" }}>
+          Saffron<span style={{ color: "#F5A623" }}>Sky</span>
+        </span>
+      </div>
+
+      <div style={{ textAlign: "center", marginBottom: 40 }}>
+        <div style={{
+          display: "inline-flex", alignItems: "center", gap: 6,
+          padding: "4px 12px", borderRadius: 999,
+          background: "rgba(245,166,35,.1)", border: "1px solid rgba(245,166,35,.2)",
+          marginBottom: 16,
+        }}>
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#F5A623", display: "inline-block" }} />
+          <span style={{ fontSize: ".7rem", fontWeight: 700, color: "#D4891A", letterSpacing: ".08em", textTransform: "uppercase" }}>One last step</span>
+        </div>
+        <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.7rem, 4vw, 2.3rem)", fontWeight: 800, letterSpacing: "-.04em", marginBottom: 10, color: "#111118" }}>
+          How will you use Saffron Sky?
         </h1>
-        <p style={{ color: "var(--text-3)", fontSize: ".95rem" }}>
-          Choose your role to get the best experience
+        <p style={{ color: "#7A7A8C", fontSize: ".875rem", maxWidth: 380, margin: "0 auto" }}>
+          Choose your role to get the best experience tailored for you.
         </p>
       </div>
 
       <div style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-        gap: "var(--sp-4)", width: "100%", maxWidth: 780,
+        gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
+        gap: 16, width: "100%", maxWidth: 780,
       }}>
         {ROLES.map((r, i) => (
           <button
             key={r.role}
             onClick={() => handleSelect(r.role)}
             style={{
-              background: "var(--surface)", border: `2px solid var(--border)`,
-              borderRadius: "var(--r-xl)", padding: "var(--sp-8) var(--sp-6)",
+              background: "#fff",
+              border: "1.5px solid #E8E5DF",
+              borderRadius: 20,
+              padding: "28px 24px",
               cursor: "pointer", textAlign: "left",
-              transition: "all var(--t2)",
-              animation: `fadeUp .5s var(--ease-out) ${i * 100}ms both`,
-              boxShadow: "var(--shadow-sm)",
+              transition: "all 220ms ease",
+              animation: `fadeUp .45s ease-out ${i * 80}ms both`,
+              boxShadow: "0 2px 8px rgba(0,0,0,.05)",
+              fontFamily: "inherit",
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.borderColor = r.accent;
+              e.currentTarget.style.borderColor = r.borderHover;
               e.currentTarget.style.transform = "translateY(-4px)";
-              e.currentTarget.style.boxShadow = `0 12px 40px rgba(0,0,0,.1)`;
+              e.currentTarget.style.boxShadow = `0 12px 36px ${r.glowHover}, 0 4px 12px rgba(0,0,0,.06)`;
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.borderColor = "var(--border)";
+              e.currentTarget.style.borderColor = "#E8E5DF";
               e.currentTarget.style.transform = "";
-              e.currentTarget.style.boxShadow = "var(--shadow-sm)";
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,.05)";
             }}
           >
             <div style={{
-              width: 56, height: 56, borderRadius: "var(--r-lg)",
-              background: r.bg, display: "flex", alignItems: "center",
-              justifyContent: "center", fontSize: "1.8rem", marginBottom: "var(--sp-4)",
+              width: 48, height: 48, borderRadius: 14,
+              background: "#F7F6F3",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: "1.5rem", marginBottom: 18,
             }}>{r.icon}</div>
-            <h3 style={{ fontWeight: 800, fontSize: "1.1rem", marginBottom: "var(--sp-2)", color: "var(--text-1)" }}>{r.title}</h3>
-            <p style={{ fontSize: ".85rem", color: "var(--text-3)", lineHeight: 1.5 }}>{r.desc}</p>
-            <div style={{ marginTop: "var(--sp-4)", display: "flex", alignItems: "center", gap: "var(--sp-1)", color: r.accent, fontWeight: 700, fontSize: ".85rem" }}>
-              Get started <span>→</span>
+            <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.05rem", marginBottom: 8, color: "#111118" }}>{r.title}</h3>
+            <p style={{ fontSize: ".82rem", color: "#7A7A8C", lineHeight: 1.65, marginBottom: 20 }}>{r.desc}</p>
+            <div style={{ display: "flex", alignItems: "center", gap: 5, color: r.accent, fontWeight: 700, fontSize: ".8rem" }}>
+              Get started
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
             </div>
           </button>
         ))}

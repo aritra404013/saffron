@@ -26,24 +26,37 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const [city, setCity] = useState("Fecthing Location...");
 
   async function fetchUser() {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setLoading(false);
+      return;
+    }
+
     try {
-      const token = localStorage.getItem("token");
-
-      if (!token) {
-        setLoading(false);
-        return;
-      }
-
       const { data } = await axios.get(`${BASE_URL}/api/auth/me`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
-
       setUser(data);
       setIsAuth(true);
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      if (error?.response?.status === 401 || error?.response?.status === 403) {
+        // Token is invalid/expired — clear it
+        localStorage.removeItem("token");
+      } else {
+        // Network error or server down — decode JWT locally to restore session
+        try {
+          const payload = JSON.parse(atob(token.split(".")[1]));
+          if (payload?.user && payload.exp * 1000 > Date.now()) {
+            setUser(payload.user);
+            setIsAuth(true);
+          } else {
+            localStorage.removeItem("token");
+          }
+        } catch {
+          localStorage.removeItem("token");
+        }
+      }
     } finally {
       setLoading(false);
     }

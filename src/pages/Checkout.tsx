@@ -65,7 +65,7 @@ const Checkout = () => {
       const { razorpayOrderId, key } = data;
       const options = {
         key, amount: order.amount * 100, currency: "INR",
-        name: "Tomato", description: "Food Order Payment",
+        name: "Saffron Sky", description: "Food Order Payment",
         order_id: razorpayOrderId,
         handler: async (response: any) => {
           try {
@@ -79,7 +79,7 @@ const Checkout = () => {
             navigate("/paymentsuccess/" + response.razorpay_payment_id);
           } catch { toast.error("Payment verification failed"); }
         },
-        theme: { color: "#E23744" },
+        theme: { color: "#F5A623" },
       };
       const razorpay = new (window as any).Razorpay(options);
       razorpay.open();
@@ -118,7 +118,10 @@ const Checkout = () => {
   return (
     <div className="page-pad">
       <div className="container" style={{ maxWidth: 700 }}>
-        <h1 style={{ fontWeight: 800, fontSize: "1.5rem", letterSpacing: "-.03em", marginBottom: "var(--sp-6)" }}>Checkout</h1>
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)", marginBottom: "var(--sp-8)" }}>
+          <span className="accent-line" />
+          <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.4rem", letterSpacing: "-.03em" }}>Checkout</h1>
+        </div>
 
         <div style={{ display: "grid", gap: "var(--sp-4)" }}>
           {/* Order summary */}
@@ -148,7 +151,7 @@ const Checkout = () => {
             ))}
             <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 800, fontSize: "1.05rem", borderTop: "1px solid var(--border)", paddingTop: "var(--sp-3)", marginTop: "var(--sp-2)" }}>
               <span>Total</span>
-              <span style={{ color: "var(--crimson)" }}>₹{grandTotal}</span>
+              <span style={{ color: "#F5A623" }}>₹{grandTotal}</span>
             </div>
           </div>
 
@@ -156,7 +159,7 @@ const Checkout = () => {
           <div className="card" style={{ padding: "var(--sp-5)" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--sp-4)" }}>
               <h3 style={{ fontWeight: 700 }}>Delivery Address</h3>
-              <button onClick={() => navigate("/address")} style={{ fontSize: ".8rem", color: "var(--crimson)", fontWeight: 600, background: "none", border: "none", cursor: "pointer" }}>
+              <button onClick={() => navigate("/address")} style={{ fontSize: ".8rem", color: "#F5A623", fontWeight: 600, background: "none", border: "none", cursor: "pointer" }}>
                 + Add New
               </button>
             </div>
@@ -175,11 +178,11 @@ const Checkout = () => {
                   <label key={addr._id} style={{
                     display: "flex", gap: "var(--sp-3)", padding: "var(--sp-3) var(--sp-4)",
                     borderRadius: "var(--r-md)", cursor: "pointer",
-                    border: `1.5px solid ${selectedAddressId === addr._id ? "var(--crimson)" : "var(--border)"}`,
+                    border: `1.5px solid ${selectedAddressId === addr._id ? "#F5A623" : "var(--border)"}`,
                     background: selectedAddressId === addr._id ? "var(--error-bg)" : "var(--surface)",
                     transition: "all var(--t1)",
                   }}>
-                    <input type="radio" checked={selectedAddressId === addr._id} onChange={() => setSelectedAddressId(addr._id)} style={{ accentColor: "var(--crimson)", marginTop: 2 }} />
+                    <input type="radio" checked={selectedAddressId === addr._id} onChange={() => setSelectedAddressId(addr._id)} style={{ accentColor: "#F5A623", marginTop: 2 }} />
                     <div>
                       <p style={{ fontWeight: 600, fontSize: ".85rem" }}>{addr.formattedAddress}</p>
                       <p style={{ fontSize: ".75rem", color: "var(--text-3)" }}>📞 {addr.mobile}</p>

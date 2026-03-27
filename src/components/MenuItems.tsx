@@ -120,11 +120,11 @@ const MenuItems = ({ items, onItemDeleted, isSeller }: MenuItemsProps) => {
                     style={{
                       padding: "var(--sp-2) var(--sp-3)",
                       borderRadius: "var(--r-full)",
-                      background: !item.isAvailable ? "var(--surface-3)" : "linear-gradient(135deg,var(--crimson),var(--crimson-dark))",
+                      background: !item.isAvailable ? "var(--surface-3)" : "linear-gradient(135deg,#F5A623,#D4891A)",
                       color: !item.isAvailable ? "var(--text-4)" : "#fff",
                       border: "none", fontWeight: 700, fontSize: ".8rem",
                       cursor: !item.isAvailable ? "not-allowed" : "pointer",
-                      boxShadow: item.isAvailable ? "var(--shadow-red)" : "none",
+                      boxShadow: item.isAvailable ? "0 4px 14px rgba(245,166,35,.35)" : "none",
                       display: "flex", alignItems: "center", gap: "var(--sp-1)",
                       transition: "all var(--t2)",
                       minWidth: 64, justifyContent: "center",
