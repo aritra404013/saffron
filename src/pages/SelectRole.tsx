@@ -60,14 +60,11 @@ const SelectRole = () => {
       padding: "var(--sp-8) var(--sp-4)",
     }}>
       <div className="anim-fade-up" style={{ textAlign: "center", marginBottom: "var(--sp-10)" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: "var(--sp-3)", marginBottom: "var(--sp-6)" }}>
-          <div style={{ width: 44, height: 44, borderRadius: "var(--r-lg)", background: "linear-gradient(135deg, var(--gold-light), var(--gold))", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "var(--shadow-gold)" }}>
-            <span style={{ fontFamily: "'Cormorant Garamond', serif", color: "#fff", fontWeight: 700, fontSize: "1.3rem" }}>S</span>
-          </div>
-          <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.4rem", color: "var(--text-1)", letterSpacing: ".02em" }}>Saffron Sky</span>
+        <div style={{ display: "inline-flex", alignItems: "center", marginBottom: "var(--sp-6)" }}>
+          <img src="/src/assets/logo.png" alt="Foodify" style={{ height: 80, objectFit: "contain" }} />
         </div>
         <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(1.8rem, 4vw, 2.4rem)", fontWeight: 600, letterSpacing: ".01em", marginBottom: "var(--sp-3)", color: "var(--text-1)" }}>
-          How will you use Saffron Sky?
+          How will you use Foodify?
         </h1>
         <p style={{ color: "var(--text-3)", fontSize: ".9rem" }}>Choose your role to get the best experience</p>
       </div>

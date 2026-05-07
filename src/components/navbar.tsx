@@ -43,23 +43,8 @@ const Navbar = () => {
       >
         <div className="container" style={{ display: "flex", alignItems: "center", gap: "var(--sp-4)" }}>
           {/* Logo */}
-          <Link to="/" style={{ display: "flex", alignItems: "center", gap: "var(--sp-2)", flexShrink: 0 }}>
-            <div style={{
-              width: 36, height: 36, borderRadius: "var(--r-md)",
-              background: "linear-gradient(135deg, var(--gold-light), var(--gold))",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              boxShadow: "var(--shadow-gold)", flexShrink: 0,
-            }}>
-              {/* Saffron flame icon */}
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2C12 2 7 7.5 7 12.5C7 15.538 9.239 18 12 18C14.761 18 17 15.538 17 12.5C17 10.5 15.5 9 15.5 9C15.5 9 15 11 13.5 11C12.5 11 12 10 12 9C12 6.5 13.5 4.5 13.5 4.5C13.5 4.5 12 2 12 2Z" fill="white" opacity="0.9"/>
-                <path d="M12 14C12 14 10 13 10 11.5C10 10.5 10.8 10 11.5 10.5C11.5 10.5 11 12 12 12.5C13 13 13.5 12 13.5 12C13.5 13.5 12 14 12 14Z" fill="white"/>
-                <circle cx="12" cy="20" r="2" fill="white" opacity="0.7"/>
-              </svg>
-            </div>
-            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.25rem", color: "#fff", letterSpacing: ".02em", textShadow: "0 1px 8px rgba(0,0,0,.4)" }}>
-              Saffron Sky
-            </span>
+          <Link to="/" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+            <img src="/src/assets/logo.png" alt="Foodify" style={{ height: 60, objectFit: "contain" }} />
           </Link>
 
           {/* Location */}

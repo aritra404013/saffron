@@ -31,17 +31,15 @@ const App = () => {
         gap: "var(--sp-5)",
       }}>
         <div style={{
-          width: 64, height: 64, borderRadius: "var(--r-xl)",
-          background: "linear-gradient(135deg, var(--gold-light), var(--gold))",
+          width: 160, height: 160,
           display: "flex", alignItems: "center", justifyContent: "center",
-          boxShadow: "var(--shadow-gold)",
           animation: "float 2s ease-in-out infinite",
         }}>
-          <span style={{ fontFamily: "'Cormorant Garamond', serif", color: "#fff", fontWeight: 700, fontSize: "1.6rem" }}>S</span>
+          <img src="/src/assets/logo.png" alt="Foodify" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
         </div>
         <div style={{ textAlign: "center" }}>
           <p style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.1rem", color: "var(--text-2)", letterSpacing: ".06em" }}>
-            SAFFRON SKY
+            FOODIFY
           </p>
           <p style={{ color: "var(--text-4)", fontSize: ".78rem", marginTop: 4, letterSpacing: ".04em" }}>
             Finding restaurants near you...
