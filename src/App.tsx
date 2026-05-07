@@ -18,6 +18,7 @@ import Orders from "./pages/Orders";
 import OrderPage from "./pages/OrderPage";
 import RiderDashboard from "./pages/RiderDashboard";
 import Admin from "./pages/Admin";
+import InstallPWA from "./components/InstallPWA";
 
 const App = () => {
   const { user, loading } = useAppData();
@@ -65,6 +66,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
+      <InstallPWA />
       <Routes>
         <Route element={<PublicRoute />}>
           <Route path="/login" element={<Login />} />
