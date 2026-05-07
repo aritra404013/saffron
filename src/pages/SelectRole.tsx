@@ -61,7 +61,7 @@ const SelectRole = () => {
     }}>
       <div className="anim-fade-up" style={{ textAlign: "center", marginBottom: "var(--sp-10)" }}>
         <div style={{ display: "inline-flex", alignItems: "center", marginBottom: "var(--sp-6)" }}>
-          <img src="/src/assets/logo.png" alt="Foodify" style={{ height: 80, objectFit: "contain" }} />
+          <img src="/logo.png" alt="Foodify" style={{ height: 80, objectFit: "contain" }} />
         </div>
         <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(1.8rem, 4vw, 2.4rem)", fontWeight: 600, letterSpacing: ".01em", marginBottom: "var(--sp-3)", color: "var(--text-1)" }}>
           How will you use Foodify?

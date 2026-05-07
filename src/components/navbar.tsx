@@ -44,7 +44,7 @@ const Navbar = () => {
         <div className="container" style={{ display: "flex", alignItems: "center", gap: "var(--sp-4)" }}>
           {/* Logo */}
           <Link to="/" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-            <img src="/src/assets/logo.png" alt="Foodify" style={{ height: 60, objectFit: "contain" }} />
+            <img src="/logo.png" alt="Foodify" style={{ height: 60, objectFit: "contain" }} />
           </Link>
 
           {/* Location */}

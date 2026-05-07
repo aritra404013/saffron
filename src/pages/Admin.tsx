@@ -39,7 +39,7 @@ const Admin = () => {
       <div style={{ width: 220, background: "var(--charcoal)", display: "flex", flexDirection: "column", position: "sticky", top: 0, height: "100vh", overflowY: "auto", flexShrink: 0 }}>
         <div style={{ padding: "var(--sp-5) var(--sp-4)", borderBottom: "1px solid rgba(255,255,255,.08)" }}>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <img src="/src/assets/logo.png" alt="Foodify" style={{ height: 48, objectFit: "contain" }} />
+            <img src="/logo.png" alt="Foodify" style={{ height: 48, objectFit: "contain" }} />
           </div>
         </div>
         <div style={{ padding: "var(--sp-4)", borderBottom: "1px solid rgba(255,255,255,.08)" }}>

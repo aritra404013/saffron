@@ -7,7 +7,7 @@ import { BASE_URL } from "../main";
 import toast from "react-hot-toast";
 
 const Cart = () => {
-  const { cart, subTotal, quauntity, fetchCart } = useAppData();
+  const { cart, subTotal, fetchCart } = useAppData();
   const navigate = useNavigate();
   const [loadingItemId, setLoadingItemId] = useState<string | null>(null);
   const [clearingCart, setClearingCart] = useState(false);

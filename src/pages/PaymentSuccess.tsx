@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import { useAppData } from "../context/AppContext";
 
 const PaymentSuccess = () => {

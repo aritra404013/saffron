@@ -35,7 +35,7 @@ const App = () => {
           display: "flex", alignItems: "center", justifyContent: "center",
           animation: "float 2s ease-in-out infinite",
         }}>
-          <img src="/src/assets/logo.png" alt="Foodify" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+          <img src="/logo.png" alt="Foodify" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
         </div>
         <div style={{ textAlign: "center" }}>
           <p style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.1rem", color: "var(--text-2)", letterSpacing: ".06em" }}>

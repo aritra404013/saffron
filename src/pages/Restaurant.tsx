@@ -72,7 +72,7 @@ const Restaurant = () => {
         position: "sticky", top: 0, height: "100vh", overflowY: "auto", flexShrink: 0,
       }}>
         <div style={{ padding: "var(--sp-5) var(--sp-4)", display: "flex", alignItems: "center", borderBottom: "1px solid rgba(255,255,255,.08)" }}>
-          <img src="/src/assets/logo.png" alt="Foodify" style={{ height: 48, objectFit: "contain", maxWidth: sidebarOpen ? "none" : 40 }} />
+          <img src="/logo.png" alt="Foodify" style={{ height: 48, objectFit: "contain", maxWidth: sidebarOpen ? "none" : 40 }} />
         </div>
 
         {/* Restaurant name */}

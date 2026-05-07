@@ -50,7 +50,7 @@ const Login = () => {
         {/* Brand */}
         <div className="anim-fade-up" style={{ textAlign: "center", marginBottom: "var(--sp-10)" }}>
           <div style={{ display: "inline-flex", alignItems: "center", marginBottom: "var(--sp-5)" }}>
-            <img src="/src/assets/logo.png" alt="Foodify" style={{ height: 140, objectFit: "contain" }} />
+            <img src="/logo.png" alt="Foodify" style={{ height: 140, objectFit: "contain" }} />
           </div>
           <div style={{ width: 40, height: 1, background: "linear-gradient(90deg, transparent, var(--gold-light), transparent)", margin: "0 auto var(--sp-6)" }} />
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", color: "#fff", fontSize: "clamp(1.9rem, 4vw, 2.6rem)", fontWeight: 600, lineHeight: 1.2, marginBottom: "var(--sp-3)" }}>
