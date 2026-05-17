@@ -5,7 +5,7 @@ import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-routing-machine";
 import axios from "axios";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 
 declare module "leaflet" {
   namespace Routing {

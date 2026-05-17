@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, useMapEvents, useMap } from "react-lea
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import L from "leaflet";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;

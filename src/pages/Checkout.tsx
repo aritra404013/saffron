@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppData } from "../context/AppContext";
 import axios from "axios";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import { useNavigate } from "react-router-dom";
 import type { ICart, IMenuItem } from "../types";
 import toast from "react-hot-toast";
@@ -118,7 +118,7 @@ const Checkout = () => {
   return (
     <div className="page-pad">
       <div className="container" style={{ maxWidth: 700 }}>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.8rem", letterSpacing: ".01em", marginBottom: "var(--sp-6)" }}>Checkout</h1>
+        <h1 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "1.8rem", letterSpacing: ".01em", marginBottom: "var(--sp-6)" }}>Checkout</h1>
 
         <div style={{ display: "grid", gap: "var(--sp-4)" }}>
           {/* Order summary */}

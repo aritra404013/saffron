@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import Discovery from "./pages/Discovery";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/protectedRote";
 import PublicRoute from "./components/publicRoute";
@@ -39,10 +40,10 @@ const App = () => {
           <img src="/logo.png" alt="Foodify" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
         </div>
         <div style={{ textAlign: "center" }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "1.1rem", color: "var(--text-2)", letterSpacing: ".06em" }}>
-            FOODIFY
+          <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "1.2rem", color: "var(--primary)", letterSpacing: "-0.02em" }}>
+            Foodify
           </p>
-          <p style={{ color: "var(--text-4)", fontSize: ".78rem", marginTop: 4, letterSpacing: ".04em" }}>
+          <p style={{ color: "var(--text-3)", fontSize: ".85rem", marginTop: 4 }}>
             Finding restaurants near you...
           </p>
         </div>
@@ -73,6 +74,7 @@ const App = () => {
         </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Home />} />
+          <Route path="/explore" element={<Discovery />} />
           <Route path="/paymentsuccess/:paymentId" element={<PaymentSuccess />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/order/:id" element={<OrderPage />} />

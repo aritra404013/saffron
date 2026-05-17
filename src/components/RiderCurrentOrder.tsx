@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { IOrder } from "../types";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import toast from "react-hot-toast";
 import { useState } from "react";
 

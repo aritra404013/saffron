@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FreshFast - Restaurant Listings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a83900",
+                        "tertiary-container": "#cea700",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "secondary-container": "#7bf8a1",
+                        "tertiary": "#735c00",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006d37",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#5b4137",
+                        "on-secondary-fixed-variant": "#005228",
+                        "outline": "#907065",
+                        "on-background": "#271812",
+                        "primary-fixed": "#ffdbcf",
+                        "inverse-surface": "#3e2c26",
+                        "surface-tint": "#a83900",
+                        "on-primary-fixed": "#380d00",
+                        "surface-container": "#ffe9e3",
+                        "surface-dim": "#f1d4ca",
+                        "surface-container-low": "#fff1ec",
+                        "inverse-primary": "#ffb59a",
+                        "background": "#fff8f6",
+                        "tertiary-fixed": "#ffe084",
+                        "outline-variant": "#e4beb1",
+                        "inverse-on-surface": "#ffede7",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#fff8f6",
+                        "on-tertiary-fixed": "#231b00",
+                        "surface-container-high": "#ffe2d9",
+                        "tertiary-fixed-dim": "#eec209",
+                        "on-secondary-container": "#007239",
+                        "primary-container": "#ff5a00",
+                        "on-tertiary-container": "#4e3d00",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb59a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#fadcd2",
+                        "secondary-fixed": "#7efba4",
+                        "surface-variant": "#fadcd2",
+                        "surface-bright": "#fff8f6",
+                        "on-surface": "#271812",
+                        "secondary-fixed-dim": "#61de8a",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#802900",
+                        "on-secondary-fixed": "#00210c",
+                        "on-primary-container": "#511700"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "xxl": "48px",
+                        "container-margin": "20px",
+                        "unit": "8px",
+                        "gutter": "16px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "h1": ["Montserrat"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h3": ["Montserrat"],
+                        "h2": ["Montserrat"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "label-bold": ["14px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "h1": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "h2": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen pb-safe">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim font-h3 text-h3 font-Montserrat tracking-tight sticky top-0 z-50 bg-surface/90 backdrop-blur-md shadow-sm dark:shadow-none shadow-sm flex justify-between items-center px-container-margin py-md w-full max-w-7xl mx-auto">
+<div class="text-h3 font-h1 font-bold text-primary dark:text-primary-fixed-dim flex items-center gap-2">
+            FreshFast
+        </div>
+<div class="hidden md:flex flex-1 max-w-xl mx-lg relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="w-full bg-[#EAECEF] border-none rounded-xl py-sm pl-xl pr-sm text-body-sm font-body-sm focus:ring-2 focus:ring-primary outline-none" placeholder="Search restaurants or cuisines..." type="text"/>
+</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="text-primary font-label-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors duration-200" href="#">Offers</a>
+<a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors duration-200" href="#">Support</a>
+</nav>
+<div class="flex items-center gap-sm text-primary dark:text-primary-fixed-dim">
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors flex items-center justify-center relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">location_on</span>
+</button>
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors flex items-center justify-center relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_cart</span>
+<span class="absolute top-0 right-0 w-4 h-4 bg-primary rounded-full text-on-primary text-[10px] font-bold flex items-center justify-center transform translate-x-1 -translate-y-1">2</span>
+</button>
+<button class="p-xs hover:bg-surface-container-high rounded-full transition-colors flex items-center justify-center relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="w-8 h-8 rounded-full overflow-hidden border-2 border-primary ml-sm shrink-0">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A close-up, well-lit studio portrait of a person with a bright, friendly smile, suitable for a user profile avatar. The lighting is soft and even, highlighting their features against a clean, neutral background. The aesthetic is modern and approachable, fitting seamlessly into a high-quality user interface design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2nRKU1Wo1in_xkp0FT8CLF-929dQHouBnP6sT7STWIeqQsl5dhAUoFNjlwUlsNovXXTwTgY9E_4Ylqn1npGe_t677DRMSUK9PIDoO3vsQGP7EyCdAQSZfFTdppbPufZCF0JpJCynFBe_e1ezhn9T2cvFctKz544ZWeI3JHoOgt4_nPVc472hKhYzFkdK0-mSH0Lh-GNJTuIj77zdmbr948xCQV-GRINjkSlofza5ZbB8wHBgY4m8Y59O_38f7wmDYd2PniTDkJH0"/>
+</button>
+</div>
+</header>
+<div class="md:hidden px-container-margin py-md relative">
+<span class="material-symbols-outlined absolute left-8 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="w-full bg-[#EAECEF] border-none rounded-xl py-sm pl-xl pr-sm text-body-sm font-body-sm focus:ring-2 focus:ring-primary outline-none" placeholder="Search..." type="text"/>
+</div>
+<!-- Main Content Layout -->
+<main class="max-w-7xl mx-auto px-container-margin py-lg grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-xl">
+<!-- Filter Sidebar (Hidden on mobile, modal normally) -->
+<aside class="hidden lg:block space-y-xl sticky top-[100px] h-fit">
+<div class="flex justify-between items-center mb-md">
+<h2 class="text-h3 font-h3">Filters</h2>
+<button class="text-primary font-label-bold text-label-bold">Clear all</button>
+</div>
+<!-- Cuisine -->
+<div class="space-y-sm">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant mb-xs">Cuisines</h3>
+<div class="space-y-xs">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="font-body-sm text-body-sm group-hover:text-primary transition-colors">Burgers</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input checked="" class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="font-body-sm text-body-sm group-hover:text-primary transition-colors">Pizza</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="font-body-sm text-body-sm group-hover:text-primary transition-colors">Sushi</span>
+</label>
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+<span class="font-body-sm text-body-sm group-hover:text-primary transition-colors">Healthy</span>
+</label>
+</div>
+</div>
+<!-- Rating -->
+<div class="space-y-sm">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant mb-xs">Rating</h3>
+<div class="flex flex-wrap gap-sm">
+<button class="px-sm py-xs border border-outline-variant rounded-full font-label-sm text-label-sm flex items-center gap-xs hover:border-primary hover:text-primary transition-colors bg-surface-container-lowest">
+                        4.5+ <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button class="px-sm py-xs border-2 border-primary bg-primary-fixed/20 rounded-full font-label-sm text-label-sm flex items-center gap-xs text-primary transition-colors">
+                        4.0+ <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+</div>
+<!-- Price -->
+<div class="space-y-sm">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant mb-xs">Price Range</h3>
+<div class="flex rounded-lg overflow-hidden border border-outline-variant">
+<button class="flex-1 py-xs font-label-sm text-label-sm text-center border-r border-outline-variant hover:bg-surface-container-low">$</button>
+<button class="flex-1 py-xs font-label-sm text-label-sm text-center bg-primary text-on-primary font-bold">$$</button>
+<button class="flex-1 py-xs font-label-sm text-label-sm text-center border-r border-outline-variant hover:bg-surface-container-low">$$$</button>
+<button class="flex-1 py-xs font-label-sm text-label-sm text-center hover:bg-surface-container-low">$$$$</button>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-bold text-label-bold py-sm rounded-lg shadow-[0px_4px_12px_rgba(45,52,70,0.05)] hover:shadow-[0px_8px_24px_rgba(45,52,70,0.12)] transition-shadow">
+                Apply Filters
+            </button>
+</aside>
+<!-- Restaurant Grid Canvas -->
+<section>
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h1 class="text-h2 font-h2 mb-xs">Popular Near You</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant">84 restaurants delivering to your location</p>
+</div>
+<button class="lg:hidden flex items-center gap-xs text-primary font-label-bold text-label-bold px-sm py-xs border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">tune</span> Filters
+                </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-lg">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-[12px] overflow-hidden shadow-[0px_4px_12px_rgba(45,52,70,0.05)] hover:shadow-[0px_8px_24px_rgba(45,52,70,0.12)] transition-all cursor-pointer group flex flex-col h-full relative">
+<div class="absolute top-sm right-sm z-10">
+<button class="w-8 h-8 bg-surface-container-lowest/80 backdrop-blur-sm rounded-full flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+</div>
+<div class="absolute top-sm left-sm z-10 flex gap-xs">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.8
+                        </span>
+</div>
+<div class="h-[180px] w-full overflow-hidden">
+<img alt="Gourmet Pizza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A highly appetizing, close-up shot of a gourmet wood-fired pizza with fresh basil, melted mozzarella, and a blistered crust. The lighting is warm and directional, emphasizing the texture and freshness of the ingredients. The setting implies a modern, high-end pizzeria. The vibrant reds and greens contrast beautifully against the golden crust, fitting perfectly into a 'Fresh &amp; Fast' vibrant UI design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD32ItYlmuW5askC-Cz2za3zzEo4MTg1i5IEMMwGJym1nNcaWWcD_oJD3GVrwQ4lvA6ZcaBQqWk4WeWBzpv-vljdKZm7omHtvH1gjri0AdpzTX8fwnuQbHtiS-GgVLmJNJiBtvr99oRcxztuTaefQpkKzn138Kh9Jsv-YCEWBtDGQ20hyeX-maPMpYO8XHhrxe8k_AQWQsAAV6m07_tCcK0v6FpXUBnRCKFe9usPNuqpg0IMSmlSmJtgEB7b1rbo4b9VvKtrORhPo8"/>
+</div>
+<div class="p-md flex-1 flex flex-col">
+<h3 class="text-h3 font-h3 mb-xs line-clamp-1">Slice of Napoli</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-sm line-clamp-1">Authentic Italian Wood-Fired Pizza</p>
+<div class="flex gap-xs mb-md flex-wrap">
+<span class="bg-surface-container text-on-surface-variant text-[11px] font-medium px-2 py-1 rounded-md">Pizza</span>
+<span class="bg-surface-container text-on-surface-variant text-[11px] font-medium px-2 py-1 rounded-md">Italian</span>
+<span class="bg-surface-container text-on-surface-variant text-[11px] font-medium px-2 py-1 rounded-md">$$</span>
+</div>
+<div class="mt-auto pt-sm border-t border-outline-variant/50 flex justify-between items-center">
+<div class="flex items-center gap-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 0;">schedule</span>
+                                25-35 min
+                            </div>
+<div class="flex items-center gap-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 0;">local_shipping</span>
+                                $1.99
+                            </div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-[12px] overflow-hidden shadow-[0px_4px_12px_rgba(45,52,70,0.05)] hover:shadow-[0px_8px_24px_rgba(45,52,70,0.12)] transition-all cursor-pointer group flex flex-col h-full relative">
+<div class="absolute top-sm right-sm z-10">
+<button class="w-8 h-8 bg-surface-container-lowest/80 backdrop-blur-sm rounded-full flex items-center justify-center text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="absolute top-sm left-sm z-10 flex gap-xs">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.6
+                        </span>
+<span class="bg-primary text-on-primary text-[10px] font-bold px-2 py-1 rounded-full shadow-sm">
+                            Free Delivery
+                        </span>
+</div>
+<div class="h-[180px] w-full overflow-hidden">
+<img alt="Gourmet Burger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A mouth-watering, high-resolution image of a stacked gourmet burger with dripping cheese, crisp lettuce, and a shiny brioche bun. The lighting is dramatic and appetizing, casting soft shadows that highlight the juicy textures. The background is slightly blurred, focusing entirely on the vibrant, high-contrast colors of the food, perfectly aligned with an energetic food-delivery brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC039dyexKDwOw1cF_3lxXXBOCrDkmDvU2L7igwxfzv0pO6EYONRQgCVNkkv96i6iVwqFxr2D6vD10pI0BX12OSsMHyQbt3bipKXaFkwO7IXecPxZ1jsj5xPvT1-kpPp8f3008gNTv2Jlrnz5MMxnVPVT2VJTObxRDldpiT65T_YDHYYv5Ta9YT-3rSPYV0Mi37NhoCqFYlFZJA7LYTkcoFPCD9LaIkkhEOiv2NCVmaQEgL0f4UrBumIqQUQRPkSana-ei_--2sIg"/>
+</div>
+<div class="p-md flex-1 flex flex-col">
+<h3 class="text-h3 font-h3 mb-xs line-clamp-1">Urban Burger Co.</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-sm line-clamp-1">Gourmet Burgers &amp; Loaded Fries</p>
+<div class="flex gap-xs mb-md flex-wrap">
+<span class="bg-surface-container text-on-surface-variant text-[11px] font-medium px-2 py-1 rounded-md">American</span>
+<span class="bg-surface-container text-on-surface-variant text-[11px] font-medium px-2 py-1 rounded-md">Burgers</span>
+<span class="bg-surface-container text-on-surface-variant text-[11px] font-medium px-2 py-1 rounded-md">$</span>
+</div>
+<div class="mt-auto pt-sm border-t border-outline-variant/50 flex justify-between items-center">
+<div class="flex items-center gap-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 0;">schedule</span>
+                                15-25 min
+                            </div>
+<div class="flex items-center gap-xs text-body-sm font-body-sm text-secondary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">local_shipping</span>
+                                Free
+                            </div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest rounded-[12px] overflow-hidden shadow-[0px_4px_12px_rgba(45,52,70,0.05)] hover:shadow-[0px_8px_24px_rgba(45,52,70,0.12)] transition-all cursor-pointer group flex flex-col h-full relative opacity-75">
+<div class="absolute inset-0 bg-surface/40 z-20 flex items-center justify-center backdrop-blur-[1px]">
+<span class="bg-surface-container-lowest px-md py-sm rounded-full font-label-bold text-label-bold text-on-surface shadow-sm border border-outline-variant">Closed</span>
+</div>
+<div class="absolute top-sm left-sm z-10 flex gap-xs">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.9
+                        </span>
+</div>
+<div class="h-[180px] w-full overflow-hidden grayscale-[30%]">
+<img alt="Sushi Platter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A pristine, overhead shot of a fresh sushi platter featuring salmon nigiri, tuna rolls, and bright green edamame. The setting is clean, modern, and minimalist, utilizing bright, cool lighting to emphasize the freshness of the seafood. The composition is geometric and precise, conveying a premium dining experience within a clean, light-mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-yaUc-Oyb7iZM59HJ-GJhcrNua0gTwziTUJbZeIbArwqwKDK-GZVJjzDJp2ky7KQT4pRGvp18WOO03o3cOmMzecwAYXXSyu9_vnUDlzvj7eR83Sw9Axk6GhNrvbPNvoaXb7tUWEoRQsGS_J9JCrLISSG11dP_-WvvvFv4Os0UojkrKvVpiLR3ttfMoZHP4BsPQREurKDZ9QMRN14i3RsQ7obhwTJLNcNceu1_4gXDU4iRWDbhyyuICbH99oBa2ivRkBYu4Suh2Kg"/>
+</div>
+<div class="p-md flex-1 flex flex-col">
+<h3 class="text-h3 font-h3 mb-xs line-clamp-1">Kyoto Fresh</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-sm line-clamp-1">Premium Sushi &amp; Bowls</p>
+<div class="flex gap-xs mb-md flex-wrap">
+<span class="bg-surface-container text-on-surface-variant text-[11px] font-medium px-2 py-1 rounded-md">Sushi</span>
+<span class="bg-surface-container text-on-surface-variant text-[11px] font-medium px-2 py-1 rounded-md">Japanese</span>
+<span class="bg-surface-container text-on-surface-variant text-[11px] font-medium px-2 py-1 rounded-md">$$$</span>
+</div>
+<div class="mt-auto pt-sm border-t border-outline-variant/50 flex justify-between items-center">
+<div class="flex items-center gap-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 0;">schedule</span>
+                                40-55 min
+                            </div>
+<div class="flex items-center gap-xs text-body-sm font-body-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 0;">local_shipping</span>
+                                $3.99
+                            </div>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface dark:bg-surface-container-highest font-label-sm text-label-sm docked full-width bottom-0 z-50 rounded-t-xl bg-surface dark:bg-surface-container-highest shadow-[0px_-4px_12px_rgba(45,52,70,0.05)] shadow-lg fixed bottom-0 left-0 w-full flex justify-around items-center px-md pb-safe pt-sm bg-surface pt-sm pb-[calc(env(safe-area-inset-bottom)+8px)]">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors flex-1 py-xs">
+<span class="material-symbols-outlined mb-xs text-[24px]" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 hover:text-primary transition-colors flex-1 py-xs">
+<span class="material-symbols-outlined mb-xs text-[24px]" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="text-[10px] font-medium">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors flex-1 py-xs">
+<span class="material-symbols-outlined mb-xs text-[24px]" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+<span class="text-[10px] font-medium">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors flex-1 py-xs">
+<span class="material-symbols-outlined mb-xs text-[24px]" style="font-variation-settings: 'FILL' 0;">account_balance_wallet</span>
+<span class="text-[10px] font-medium">Earnings</span>
+</button>
+</nav>
+</body></html>

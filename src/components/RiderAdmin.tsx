@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import toast from "react-hot-toast";
 
 const RiderAdmin = ({ rider, onVerify }: { rider: any; onVerify: () => void }) => {

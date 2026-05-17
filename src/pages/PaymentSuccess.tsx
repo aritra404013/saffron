@@ -28,7 +28,7 @@ const PaymentSuccess = () => {
           fontSize: "2.8rem", boxShadow: "var(--shadow-gold)",
           animation: "pop .5s var(--ease) both",
         }}>💳</div>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "2.2rem", letterSpacing: ".01em", marginBottom: "var(--sp-3)" }}>
+        <h1 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "2.2rem", letterSpacing: ".01em", marginBottom: "var(--sp-3)" }}>
           Payment Successful!
         </h1>
         <p style={{ color: "var(--text-3)", lineHeight: 1.6, marginBottom: "var(--sp-4)", fontSize: ".95rem" }}>

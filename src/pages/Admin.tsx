@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import AdminRestaurantCard from "../components/AdminRestaurantCard";
 import RiderAdmin from "../components/RiderAdmin";
 import { useAppData } from "../context/AppContext";

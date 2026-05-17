@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Menu &amp; Ordering</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#a83900",
+                    "tertiary-container": "#cea700",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "secondary-container": "#7bf8a1",
+                    "tertiary": "#735c00",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "secondary": "#006d37",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#5b4137",
+                    "on-secondary-fixed-variant": "#005228",
+                    "outline": "#907065",
+                    "on-background": "#271812",
+                    "primary-fixed": "#ffdbcf",
+                    "inverse-surface": "#3e2c26",
+                    "surface-tint": "#a83900",
+                    "on-primary-fixed": "#380d00",
+                    "surface-container": "#ffe9e3",
+                    "surface-dim": "#f1d4ca",
+                    "surface-container-low": "#fff1ec",
+                    "inverse-primary": "#ffb59a",
+                    "background": "#fff8f6",
+                    "tertiary-fixed": "#ffe084",
+                    "outline-variant": "#e4beb1",
+                    "inverse-on-surface": "#ffede7",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#fff8f6",
+                    "on-tertiary-fixed": "#231b00",
+                    "surface-container-high": "#ffe2d9",
+                    "tertiary-fixed-dim": "#eec209",
+                    "on-secondary-container": "#007239",
+                    "primary-container": "#ff5a00",
+                    "on-tertiary-container": "#4e3d00",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#ffb59a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#fadcd2",
+                    "secondary-fixed": "#7efba4",
+                    "surface-variant": "#fadcd2",
+                    "surface-bright": "#fff8f6",
+                    "on-surface": "#271812",
+                    "secondary-fixed-dim": "#61de8a",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#802900",
+                    "on-secondary-fixed": "#00210c",
+                    "on-primary-container": "#511700"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "xxl": "48px",
+                    "container-margin": "20px",
+                    "unit": "8px",
+                    "gutter": "16px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "label-bold": [
+                            "Inter"
+                    ],
+                    "h1": [
+                            "Montserrat"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "h3": [
+                            "Montserrat"
+                    ],
+                    "h2": [
+                            "Montserrat"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "label-bold": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "h1": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "h3": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "h2": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim text-primary dark:text-primary-fixed-dim font-h3 text-h3 font-Montserrat tracking-tight sticky full-width top-0 z-50 bg-surface/90 backdrop-blur-md shadow-sm dark:shadow-none shadow-sm flex justify-between items-center px-container-margin py-md w-full mx-auto">
+<div class="text-h3 font-h1 font-bold text-primary dark:text-primary-fixed-dim flex items-center gap-2">
+            FreshFast
+        </div>
+<nav class="hidden md:flex gap-lg">
+<a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="text-primary font-label-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200" href="#">Offers</a>
+<a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors duration-200" href="#">Support</a>
+</nav>
+<div class="flex items-center gap-md">
+<button aria-label="location_on" class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</button>
+<button aria-label="shopping_cart" class="text-on-surface-variant hover:text-primary transition-colors duration-200 relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">3</span>
+</button>
+<button aria-label="notifications" class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A close-up portrait of a young woman with a neutral expression, serving as a user profile picture. The lighting is soft and natural, highlighting her features against a blurred, bright background. The overall aesthetic is clean and modern, fitting seamlessly into a high-contrast, minimalist user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWmMr4mxKmMZOI-36tbx5UD1YPsUNqpUhNCz_plhJZ5dnFdQdOt6jgFaFlKWOVXCH-1T38cC0BWFuEzJekMWBQ8vkXiWVH98CeDC2TSo5Re7-579HHN4W79CEEsgpfWxTtckJv96Yo1yvcw-cHoMYI9_pB6KbiV3r_kUQLJ8inFi9u1nsD39eWnl6ZnNa7Dta2aUn3bN1tkGwNv6DDqsim161gX4eWrY6iWEDTdJJFqBNoyXCpOsjM1hYbnRonqRsgzV3UhRE_7DQ"/>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-container-margin py-lg grid grid-cols-1 lg:grid-cols-12 gap-lg pb-24 md:pb-lg">
+<!-- Left Content Area -->
+<div class="lg:col-span-8 flex flex-col gap-lg">
+<!-- Restaurant Header -->
+<section class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(45,52,70,0.05)] overflow-hidden">
+<div class="h-48 w-full bg-cover bg-center relative" data-alt="A vibrant overhead shot of a bustling restaurant table filled with a variety of freshly prepared dishes, including steaming noodles, vibrant salads, and perfectly grilled meats. The lighting is warm and inviting, casting soft shadows that enhance the appetizing textures of the food. The scene conveys a high-energy, modern dining experience with a focus on fresh ingredients." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDjbQQ93eiEThWIC_poiHMc8WhHNkgyZd79lD48sgumeWyILi5gI97LB_wsGKNacQCn3JSuJZcBJPEzhVc8pM2Q-7gM8h3ulsHV4Vk6_vQBl_eVFUwAfwW9naGaLSzTo00QHnv29GH4clsxwWY2uSWxUqj6wwHx0QMhaQOtKUq7LCWLokuFhpJ8CfOCSoC7srbj_-WVnn16e2K2W3W8sQN42mn-GDKlnTzsbBkp-KCtwbY00318s--1hay3R7hFI9PUe-QRFz36m8Q')">
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col sm:flex-row gap-md items-start sm:items-center relative -mt-12 sm:-mt-16 z-10">
+<img alt="Restaurant Logo" class="w-24 h-24 rounded-lg shadow-lg border-4 border-surface-container-lowest object-cover bg-surface-container-lowest" data-alt="A clean, minimalist close-up shot of a perfectly plated artisan pizza slice, used as a vibrant restaurant logo. The bright orange and fresh green basil pop against a pure white background, emphasizing the 'Fresh &amp; Fast' brand identity. The lighting is sharp and high-contrast, making the food look incredibly appetizing and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmNv24-hyeoXxPx8Nvx0XRcoFMDkWU5cboHXHg1RBw6QYK6hG9ELc2RGpybmSvAgnSKMAq_LL9HNDrXi1Wh67MzEMipp5E_GTmA0nreeXifLRzOa9n17aegO4ExJqSflsbSbzteu9YkDEFeK-ZBAJL7RarjT1GR11kxSEJHOm4FJlxLZ_Axku9fRHa45CWfsjXxzxcBygZAOvJll10wXLQ6pXg_ZylBdqD_8sDveJs3QdZrPEYE6G8_QoMwJ4SMR5iK3YofHZsK0c"/>
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-xs">
+<span class="bg-secondary/10 text-secondary font-label-bold text-label-bold px-sm py-xs rounded-full inline-flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">storefront</span>
+                                Open Now
+                            </span>
+<span class="bg-tertiary-container/20 text-on-tertiary-fixed-variant font-label-bold text-label-bold px-sm py-xs rounded-full inline-flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.8 (2.4k)
+                            </span>
+</div>
+<h1 class="font-h2 text-h2 text-on-background mb-xs">The Rustic Oven</h1>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Artisanal wood-fired pizzas, fresh pastas, and vibrant salads crafted with locally sourced ingredients. Fast, fresh, and irresistibly delicious.</p>
+</div>
+</div>
+</section>
+<!-- Category Navigation -->
+<div class="sticky top-[72px] z-40 bg-background/90 backdrop-blur-sm py-sm -mx-container-margin px-container-margin sm:mx-0 sm:px-0">
+<div class="flex gap-sm overflow-x-auto pb-xs scrollbar-hide snap-x">
+<button class="snap-start shrink-0 bg-primary text-on-primary font-label-bold text-label-bold px-md py-sm rounded-full shadow-[0px_4px_12px_rgba(45,52,70,0.05)] whitespace-nowrap">Starters</button>
+<button class="snap-start shrink-0 bg-surface-container-lowest text-on-surface-variant hover:text-primary hover:bg-surface-container font-label-bold text-label-bold px-md py-sm rounded-full border border-outline-variant whitespace-nowrap transition-colors">Wood-Fired Pizzas</button>
+<button class="snap-start shrink-0 bg-surface-container-lowest text-on-surface-variant hover:text-primary hover:bg-surface-container font-label-bold text-label-bold px-md py-sm rounded-full border border-outline-variant whitespace-nowrap transition-colors">Fresh Pastas</button>
+<button class="snap-start shrink-0 bg-surface-container-lowest text-on-surface-variant hover:text-primary hover:bg-surface-container font-label-bold text-label-bold px-md py-sm rounded-full border border-outline-variant whitespace-nowrap transition-colors">Salads</button>
+<button class="snap-start shrink-0 bg-surface-container-lowest text-on-surface-variant hover:text-primary hover:bg-surface-container font-label-bold text-label-bold px-md py-sm rounded-full border border-outline-variant whitespace-nowrap transition-colors">Desserts</button>
+<button class="snap-start shrink-0 bg-surface-container-lowest text-on-surface-variant hover:text-primary hover:bg-surface-container font-label-bold text-label-bold px-md py-sm rounded-full border border-outline-variant whitespace-nowrap transition-colors">Beverages</button>
+</div>
+</div>
+<!-- Menu Category: Starters -->
+<section class="pt-sm scroll-mt-[120px]" id="starters">
+<h2 class="font-h3 text-h3 text-on-background mb-md">Starters</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<!-- Menu Item Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(45,52,70,0.05)] p-sm flex gap-md items-center group hover:shadow-[0px_8px_24px_rgba(45,52,70,0.12)] transition-shadow">
+<img alt="Garlic Bread" class="w-24 h-24 rounded-lg object-cover" data-alt="A close-up shot of crispy, golden-brown garlic bread slices arranged on a wooden board. The bread is glistening with melted butter and sprinkled with fresh green parsley. The background is slightly blurred to focus on the appetizing texture, fitting a high-contrast, modern food app aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2cUMnPHRCczbvAqg_qMWUy1hwgAR4vszpFm1NvVYqvih5GPslCWdZ-TY5b3TYPGViP4cryErs641Qwr8fRyWP78FAaaD2hu13zFt9rh6L57G8xfZo96oVfHBcabroI3CzQU07LUe_e2mts5gRPZwlDkxJWjeXAVuhm7MdbdcF3PNja0Op7MPjEkpptHuEqCTDt_kMD9g7ZR9-7znus2lOqUQAG3-Xsb6Ia409nQjGmZusGS0UnQQhbW6FGdaBIy0CZIiKh-PYXnQ"/>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-label-bold text-label-bold text-on-background truncate pr-2">Garlic Parmesan Knots</h3>
+<span class="font-label-bold text-label-bold text-primary shrink-0">$6.50</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-sm">Freshly baked dough knots tossed in garlic butter, parmesan, and herbs. Served with marinara.</p>
+<button class="bg-primary-container/10 text-primary hover:bg-primary hover:text-on-primary font-label-bold text-label-bold px-sm py-xs rounded-lg inline-flex items-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                                Add
+                            </button>
+</div>
+</div>
+<!-- Menu Item Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(45,52,70,0.05)] p-sm flex gap-md items-center group hover:shadow-[0px_8px_24px_rgba(45,52,70,0.12)] transition-shadow">
+<img alt="Caprese Salad" class="w-24 h-24 rounded-lg object-cover" data-alt="A vibrant, top-down view of a classic Caprese salad featuring thick slices of ripe red tomatoes layered with fresh white mozzarella and vibrant green basil leaves. Drizzled with dark balsamic glaze, the dish is presented on a minimalist white plate, emphasizing clean lines and fresh ingredients in bright, natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfuavWuvbr56Y5zg6MNcOckUFTD41FDd6WcnG4PZmAjUMi32J5kyAQetAKJpVJBARVafwkEBBFgN5Xo-0izyta4jHjVRig8l5nDqOAElsT6TMuwE9-HGDYvrtNll7h0-_4xGG_Ymn3O12qPgMe5BSfCf_KeoCH8zia75fV5v64xUcXjgG4eGW6ZH1CxUwuaUZ_oLugXK4MqBgTcFbW3Ouq2lwHAycuzS-OqDZtdDSVg3SbY4qiFU7d7wvHm3VnmDADt3Jp0eXyGfU"/>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-xs">
+<div class="flex items-center gap-xs truncate pr-2">
+<h3 class="font-label-bold text-label-bold text-on-background truncate">Caprese Skewers</h3>
+<span class="bg-secondary/10 text-secondary text-[10px] px-1 rounded uppercase tracking-wider font-bold shrink-0">Fresh</span>
+</div>
+<span class="font-label-bold text-label-bold text-primary shrink-0">$8.00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-sm">Cherry tomatoes, fresh mozzarella, and basil drizzled with a balsamic glaze.</p>
+<button class="bg-primary-container/10 text-primary hover:bg-primary hover:text-on-primary font-label-bold text-label-bold px-sm py-xs rounded-lg inline-flex items-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                                Add
+                            </button>
+</div>
+</div>
+<!-- Menu Item Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(45,52,70,0.05)] p-sm flex gap-md items-center group hover:shadow-[0px_8px_24px_rgba(45,52,70,0.12)] transition-shadow">
+<div class="w-24 h-24 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-outline text-h1">image</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-label-bold text-label-bold text-on-background truncate pr-2">Crispy Calamari</h3>
+<span class="font-label-bold text-label-bold text-primary shrink-0">$12.00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-sm">Lightly dusted and fried crisp, served with house-made lemon aioli and marinara.</p>
+<button class="bg-primary-container/10 text-primary hover:bg-primary hover:text-on-primary font-label-bold text-label-bold px-sm py-xs rounded-lg inline-flex items-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                                Add
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Menu Category: Mains -->
+<section class="pt-lg scroll-mt-[120px]" id="mains">
+<h2 class="font-h3 text-h3 text-on-background mb-md">Wood-Fired Pizzas</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<!-- Menu Item Card 4 (Bento style large) -->
+<div class="sm:col-span-2 bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(45,52,70,0.05)] overflow-hidden flex flex-col sm:flex-row group hover:shadow-[0px_8px_24px_rgba(45,52,70,0.12)] transition-shadow">
+<img alt="Margherita Pizza" class="w-full sm:w-1/3 h-48 sm:h-auto object-cover" data-alt="A dynamic, angled shot of a whole, freshly baked Margherita pizza hot out of a wood-fired oven. The crust is blistered and charred in spots, while the center features melting mozzarella patches and bright green basil leaves. The lighting highlights the glossy texture of the olive oil and tomato sauce, creating a highly appetizing, energetic food visual." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJdCG7iTvfi4pvHpHxovFG7gSjaDQgOgnx3gGb_hhWsD8eHxzp1h4w7yUt-ebrB-qgZNQBXPtnnIqNqc1DUexrXwQT-w5XB3ULOgcKs2w_BGTk3lyLCpgu0OrAii3-uVWpJjqmlxJaSX-sIwjXOPF559hTjBtfVjW3aDj_GSBuzPYR6XlxmvU8bvmAnJ1IUOI253oNX7eEYq2IgAtWSVmPh2G5Co3WdeYLkCbRw5SROw2r4gbd83j3hnrQXdLfhM8Mcot_cuKdEvI"/>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-xs">
+<div class="flex items-center gap-xs">
+<h3 class="font-h3 text-h3 text-on-background">Classic Margherita</h3>
+<span class="bg-tertiary-container/20 text-on-tertiary-fixed-variant text-[10px] px-1 rounded uppercase tracking-wider font-bold shrink-0">Best Seller</span>
+</div>
+<span class="font-h3 text-h3 text-primary shrink-0">$16.00</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-md">San Marzano tomato sauce, fresh mozzarella di bufala, basil, and extra virgin olive oil. A timeless classic done perfectly.</p>
+</div>
+<div class="flex justify-end">
+<button class="bg-primary text-on-primary hover:bg-on-primary-fixed-variant font-label-bold text-label-bold px-lg py-sm rounded-lg shadow-sm inline-flex items-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+                                    Add to Order
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Sidebar / Cart -->
+<div class="hidden lg:block lg:col-span-4">
+<div class="sticky top-[100px] bg-surface-container-lowest rounded-xl shadow-[0px_4px_12px_rgba(45,52,70,0.05)] border border-outline-variant p-md flex flex-col h-[calc(100vh-140px)]">
+<!-- Cart Header -->
+<div class="flex justify-between items-center pb-md border-b border-outline-variant mb-md">
+<h2 class="font-h3 text-h3 text-on-background flex items-center gap-sm">
+<span class="material-symbols-outlined">shopping_cart</span>
+                        Your Order
+                    </h2>
+<span class="bg-primary text-on-primary font-label-bold text-label-bold rounded-full h-6 w-6 flex items-center justify-center">3</span>
+</div>
+<!-- Cart Items (Scrollable) -->
+<div class="flex-1 overflow-y-auto pr-sm scrollbar-thin scrollbar-thumb-outline-variant scrollbar-track-transparent">
+<div class="flex flex-col gap-md">
+<!-- Cart Item 1 -->
+<div class="flex gap-sm">
+<div class="flex flex-col items-center gap-1 border border-outline-variant rounded-lg p-1 h-fit">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[16px]">add</span></button>
+<span class="font-label-bold text-label-bold">2</span>
+<button class="text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="font-label-bold text-label-bold text-on-background truncate">Garlic Parmesan Knots</h4>
+<span class="font-label-bold text-label-bold text-on-background">$13.00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Extra marinara sauce</p>
+</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="flex gap-sm">
+<div class="flex flex-col items-center gap-1 border border-outline-variant rounded-lg p-1 h-fit">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[16px]">add</span></button>
+<span class="font-label-bold text-label-bold">1</span>
+<button class="text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h4 class="font-label-bold text-label-bold text-on-background truncate">Classic Margherita</h4>
+<span class="font-label-bold text-label-bold text-on-background">$16.00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">No modifications</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Cart Footer / Totals -->
+<div class="pt-md border-t border-outline-variant mt-md shrink-0">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Subtotal</span>
+<span class="font-body-sm text-body-sm text-on-background">$29.00</span>
+</div>
+<div class="flex justify-between items-center mb-md">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Taxes &amp; Fees</span>
+<span class="font-body-sm text-body-sm text-on-background">$3.48</span>
+</div>
+<div class="flex justify-between items-center mb-lg">
+<span class="font-h3 text-h3 text-on-background">Total</span>
+<span class="font-h3 text-h3 text-primary">$32.48</span>
+</div>
+<button class="w-full bg-primary text-on-primary hover:bg-on-primary-fixed-variant font-h3 text-h3 py-md rounded-xl shadow-[0px_8px_24px_rgba(45,52,70,0.12)] transition-all flex justify-center items-center gap-sm">
+                        Checkout
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile BottomNavBar (From JSON) -->
+<nav class="md:hidden bg-surface dark:bg-surface-container-highest shadow-[0px_-4px_12px_rgba(45,52,70,0.05)] docked full-width bottom-0 z-50 rounded-t-xl fixed bottom-0 left-0 w-full flex justify-around items-center px-md pb-safe pt-sm bg-surface">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors duration-200 tap-scale" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors duration-200 tap-scale" href="#">
+<span class="material-symbols-outlined text-[24px]">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 tap-scale" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-sm text-label-sm font-bold">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors duration-200 tap-scale" href="#">
+<span class="material-symbols-outlined text-[24px]">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Earnings</span>
+</a>
+</nav>
+</body></html>

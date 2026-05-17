@@ -1,9 +1,9 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { useAppData } from "../context/AppContext";
 import { useEffect, useState } from "react";
 import type { IRestaurant } from "../types";
 import axios from "axios";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import RestaurantCard from "../components/RestaurantCard";
 
 const CATEGORIES = [
@@ -18,12 +18,15 @@ const CATEGORIES = [
 ];
 
 const SkeletonCard = () => (
-  <div className="card" style={{ overflow: "hidden" }}>
-    <div className="skeleton skeleton-image" style={{ borderRadius: 0 }} />
+  <div style={{
+    background: "var(--surface)", borderRadius: 12, overflow: "hidden",
+    boxShadow: "0px 4px 12px rgba(45,52,70,0.05)", border: "1px solid var(--border)",
+  }}>
+    <div style={{ height: 180, background: "var(--surface-warm)", animation: "pulse 1.5s ease-in-out infinite" }} />
     <div style={{ padding: "var(--sp-4)", display: "flex", flexDirection: "column", gap: "var(--sp-2)" }}>
-      <div className="skeleton skeleton-title" style={{ width: "70%" }} />
-      <div className="skeleton skeleton-text" style={{ width: "50%" }} />
-      <div className="skeleton skeleton-text" style={{ width: "40%" }} />
+      <div style={{ height: 16, borderRadius: 8, width: "70%", background: "var(--surface-warm)", animation: "pulse 1.5s ease-in-out infinite" }} />
+      <div style={{ height: 12, borderRadius: 8, width: "50%", background: "var(--surface-warm)", animation: "pulse 1.5s ease-in-out infinite" }} />
+      <div style={{ height: 12, borderRadius: 8, width: "40%", background: "var(--surface-warm)", animation: "pulse 1.5s ease-in-out infinite" }} />
     </div>
   </div>
 );
@@ -70,150 +73,156 @@ const Home = () => {
   };
 
   return (
-    <div className="page-pad">
+    <main style={{ paddingBottom: 80 }}>
       {/* ── HERO ────────────────────────────────────────── */}
-      <div style={{
-        background: "linear-gradient(135deg, var(--ink) 0%, var(--charcoal) 50%, var(--ink-3) 100%)",
-        borderRadius: "var(--r-2xl)", marginBottom: "var(--sp-10)",
-        padding: "clamp(var(--sp-10), 6vw, var(--sp-16)) clamp(var(--sp-6), 4vw, var(--sp-12))",
-        position: "relative", overflow: "hidden",
+      <section style={{
+        position: "relative",
+        background: "var(--surface-warm)",
+        padding: "var(--sp-8) 20px var(--sp-12)",
+        overflow: "hidden"
       }}>
-        {/* Gold orb decorations */}
-        <div style={{ position: "absolute", top: -80, right: -80, width: 380, height: 380, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,146,42,.16) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: -60, left: "25%", width: 260, height: 260, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,146,42,.08) 0%, transparent 70%)", pointerEvents: "none" }} />
-        {/* Top gold accent line */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(90deg, transparent, var(--gold-light), transparent)" }} />
+        <div style={{
+          position: "absolute", top: 0, left: 0, right: 0, bottom: 0, opacity: 0.2, zIndex: 0,
+          backgroundImage: "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80')",
+          backgroundSize: "cover", backgroundPosition: "center", pointerEvents: "none"
+        }} />
 
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-2)", marginBottom: "var(--sp-4)" }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--gold)", display: "inline-block" }} />
-            <span style={{ fontSize: ".7rem", fontWeight: 700, color: "rgba(255,255,255,.45)", letterSpacing: ".12em", textTransform: "uppercase" }}>
-              {city}
-            </span>
-          </div>
-          <h1 className="anim-fade-up" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#fff", fontSize: "clamp(2rem, 5vw, 3.4rem)", fontWeight: 600, letterSpacing: ".01em", lineHeight: 1.15, marginBottom: "var(--sp-4)" }}>
-            What are you<br />
-            <span className="gold-shimmer">craving today?</span>
-          </h1>
-          <p style={{ color: "rgba(255,255,255,.5)", fontSize: ".95rem", marginBottom: "var(--sp-8)", maxWidth: 440, lineHeight: 1.7 }}>
-            Discover curated restaurants near you. Premium food, swift delivery.
-          </p>
-
-          {/* Search bar */}
-          <form onSubmit={handleSearch}>
-            <div style={{ display: "flex", gap: "var(--sp-2)", maxWidth: 540 }}>
-              <div style={{ flex: 1, position: "relative" }}>
-                <span style={{ position: "absolute", left: "var(--sp-5)", top: "50%", transform: "translateY(-50%)", fontSize: ".9rem", color: "rgba(255,255,255,.4)" }}>🔍</span>
-                <input
-                  value={searchInput}
-                  onChange={e => setSearchInput(e.target.value)}
-                  placeholder="Search pizza, biryani, burgers..."
-                  style={{
-                    width: "100%", padding: "var(--sp-4) var(--sp-5) var(--sp-4) calc(var(--sp-5) + 26px)",
-                    borderRadius: "var(--r-full)", border: "1.5px solid rgba(255,255,255,.1)",
-                    background: "rgba(255,255,255,.07)", backdropFilter: "blur(12px)",
-                    color: "#fff", fontSize: ".9rem", fontFamily: "inherit",
-                    transition: "all var(--t2)",
-                  }}
-                  onFocus={e => { e.target.style.background = "rgba(255,255,255,.12)"; e.target.style.borderColor = "var(--gold)"; }}
-                  onBlur={e => { e.target.style.background = "rgba(255,255,255,.07)"; e.target.style.borderColor = "rgba(255,255,255,.1)"; }}
-                />
-              </div>
-              <button type="submit" className="btn btn-gold" style={{ flexShrink: 0 }}>Search</button>
+        <div style={{
+          position: "relative", zIndex: 10, maxWidth: 1280, margin: "0 auto",
+          display: "flex", flexDirection: "column", alignItems: "center", gap: "var(--sp-8)"
+        }}>
+          <div style={{ width: "100%", textAlign: "center" }}>
+            {/* City indicator */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: "var(--sp-4)" }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 18, color: "var(--primary)" }}>location_on</span>
+              <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", fontWeight: 600, color: "var(--text-2)" }}>{city}</span>
             </div>
-          </form>
 
-          {/* Stats */}
-          <div style={{ display: "flex", gap: "var(--sp-8)", marginTop: "var(--sp-8)", flexWrap: "wrap" }}>
-            {[{ value: "500+", label: "Restaurants" }, { value: "30 min", label: "Avg Delivery" }, { value: "4.8★", label: "Avg Rating" }].map(s => (
-              <div key={s.label}>
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--gold-light)", fontWeight: 600, fontSize: "1.3rem" }}>{s.value}</p>
-                <p style={{ color: "rgba(255,255,255,.35)", fontSize: ".68rem", letterSpacing: ".08em", textTransform: "uppercase", marginTop: 2 }}>{s.label}</p>
+            <h1 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "40px", color: "var(--charcoal)", marginBottom: "var(--sp-6)", lineHeight: 1.2, fontWeight: 700, letterSpacing: "-0.02em" }}>
+              Lightning fast delivery.<br />
+              <span style={{ color: "var(--primary)" }}>Fresh to your door.</span>
+            </h1>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "18px", color: "var(--text-2)", marginBottom: "var(--sp-8)", maxWidth: 512, margin: "0 auto var(--sp-8)" }}>
+              Discover the best food and drinks in your city, delivered in minutes.
+            </p>
+
+            {/* Search bar — connected to backend */}
+            <form onSubmit={handleSearch}>
+              <div style={{
+                background: "var(--surface)", padding: "var(--sp-2)", borderRadius: "12px",
+                boxShadow: "0px 8px 24px rgba(45,52,70,0.12)",
+                display: "flex", flexDirection: "column", gap: "var(--sp-2)", maxWidth: 672, margin: "0 auto"
+              }} className="md-flex-row">
+                <div style={{ display: "flex", alignItems: "center", flex: 1, background: "var(--surface-warm)", padding: "0 16px", borderRadius: "8px", height: 48 }}>
+                  <span className="material-symbols-outlined" style={{ color: "var(--text-2)", marginRight: "var(--sp-2)" }}>search</span>
+                  <input
+                    value={searchInput}
+                    onChange={e => setSearchInput(e.target.value)}
+                    style={{ width: "100%", background: "transparent", border: "none", outline: "none", color: "var(--text-1)", fontFamily: "'Inter', sans-serif", fontSize: "16px" }}
+                    placeholder="Search pizza, biryani, burgers..." type="text"
+                  />
+                </div>
+                <button type="submit" style={{
+                  background: "var(--primary)", color: "var(--on-primary)", fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: "14px",
+                  padding: "0 32px", height: 48, borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", border: "none", cursor: "pointer",
+                  boxShadow: "var(--shadow-sm)"
+                }}>
+                  <span className="material-symbols-outlined">search</span>
+                  Find Food
+                </button>
               </div>
-            ))}
+            </form>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="container">
-        {/* ── CATEGORIES ──────────────────────────────────── */}
-        <section style={{ marginBottom: "var(--sp-10)" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)", marginBottom: "var(--sp-5)" }}>
-            <p className="section-eyebrow">Browse by Category</p>
-            <div style={{ flex: 1, height: 1, background: "var(--border)" }} />
-          </div>
-          <div style={{ display: "flex", gap: "var(--sp-3)", overflowX: "auto", paddingBottom: "var(--sp-2)" }} className="scroll-hide">
-            {CATEGORIES.map((cat, i) => (
-              <button
-                key={cat.label}
-                onClick={() => handleCategory(cat.label)}
-                style={{
-                  display: "flex", flexDirection: "column", alignItems: "center", gap: "var(--sp-2)",
-                  padding: "var(--sp-4) var(--sp-5)", borderRadius: "var(--r-xl)",
-                  background: search === cat.label ? "linear-gradient(135deg, var(--gold-light), var(--gold))" : "var(--surface)",
-                  border: `1.5px solid ${search === cat.label ? "transparent" : "var(--border)"}`,
-                  boxShadow: search === cat.label ? "var(--shadow-gold)" : "0 2px 8px rgba(15,14,12,.05)",
-                  whiteSpace: "nowrap", cursor: "pointer", flexShrink: 0,
-                  transition: "all var(--t2)",
-                  animation: `fadeUp .4s var(--ease-out) ${i * 40}ms both`,
-                }}
-                onMouseEnter={e => { if (search !== cat.label) { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "var(--shadow-md)"; e.currentTarget.style.borderColor = "var(--gold)"; } }}
-                onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = search === cat.label ? "var(--shadow-gold)" : "0 2px 8px rgba(15,14,12,.05)"; e.currentTarget.style.borderColor = search === cat.label ? "transparent" : "var(--border)"; }}
-              >
-                <span style={{ fontSize: "1.6rem" }}>{cat.icon}</span>
-                <span style={{ fontSize: ".7rem", fontWeight: 700, color: search === cat.label ? "#fff" : "var(--text-2)", letterSpacing: ".04em", textTransform: "uppercase" }}>{cat.label}</span>
-              </button>
-            ))}
-          </div>
-        </section>
+      {/* ── CATEGORIES ──────────────────────────────────── */}
+      <section style={{ padding: "var(--sp-8) 20px 0", maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ display: "flex", gap: "var(--sp-3)", overflowX: "auto", paddingBottom: "var(--sp-4)" }} className="scroll-hide">
+          {CATEGORIES.map((cat, i) => (
+            <button
+              key={cat.label}
+              onClick={() => handleCategory(cat.label)}
+              style={{
+                display: "flex", flexDirection: "column", alignItems: "center", gap: "var(--sp-2)",
+                padding: "var(--sp-3) var(--sp-5)", borderRadius: "12px",
+                background: search === cat.label ? "var(--primary)" : "var(--surface)",
+                border: `1.5px solid ${search === cat.label ? "transparent" : "var(--border)"}`,
+                boxShadow: search === cat.label ? "0 4px 12px rgba(168,57,0,0.3)" : "0px 4px 12px rgba(45,52,70,0.05)",
+                whiteSpace: "nowrap", cursor: "pointer", flexShrink: 0,
+                transition: "all 250ms",
+                animation: `fadeUp .4s var(--ease-out) ${i * 40}ms both`,
+              }}
+              onMouseEnter={e => { if (search !== cat.label) { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0px 8px 24px rgba(45,52,70,0.12)"; e.currentTarget.style.borderColor = "var(--primary)"; } }}
+              onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = search === cat.label ? "0 4px 12px rgba(168,57,0,0.3)" : "0px 4px 12px rgba(45,52,70,0.05)"; e.currentTarget.style.borderColor = search === cat.label ? "transparent" : "var(--border)"; }}
+            >
+              <span style={{ fontSize: "1.6rem" }}>{cat.icon}</span>
+              <span style={{ fontSize: ".7rem", fontWeight: 700, color: search === cat.label ? "var(--on-primary)" : "var(--text-2)", letterSpacing: ".04em", textTransform: "uppercase" }}>{cat.label}</span>
+            </button>
+          ))}
+        </div>
+      </section>
 
-        {/* ── RESTAURANT GRID ──────────────────────────────── */}
-        <section>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "var(--sp-5)" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)" }}>
-              <p className="section-eyebrow">{search ? `Results for "${search}"` : "Restaurants Near You"}</p>
-              {!loading && <span style={{ fontSize: ".72rem", fontWeight: 600, color: "var(--text-3)", background: "var(--surface-3)", padding: "2px 10px", borderRadius: "var(--r-full)" }}>({restaurants.length})</span>}
-            </div>
+      {/* ── RESTAURANTS FROM BACKEND ──────────────────── */}
+      <section style={{ padding: "var(--sp-8) 20px var(--sp-12)", maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "var(--sp-6)" }}>
+          <div>
+            <h2 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "32px", fontWeight: 700, color: "var(--charcoal)", lineHeight: 1.2 }}>
+              {search ? `Results for "${search}"` : "Restaurants Near You"}
+            </h2>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "16px", color: "var(--text-2)", marginTop: "4px" }}>
+              {loading ? "Finding restaurants..." : `${restaurants.length} restaurant${restaurants.length !== 1 ? "s" : ""} delivering to you`}
+            </p>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: "var(--sp-3)" }}>
             {search && (
-              <button onClick={() => { setSearchInput(""); setSearchParams({}); }} style={{ fontSize: ".8rem", color: "var(--gold)", fontWeight: 600, background: "none", border: "none", cursor: "pointer" }}>
-                Clear ×
+              <button onClick={() => { setSearchInput(""); setSearchParams({}); }} style={{
+                color: "var(--primary)", fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: "14px",
+                background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 4
+              }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 18 }}>close</span> Clear
               </button>
             )}
+            <Link to="/explore" className="hide-mobile" style={{ color: "var(--primary)", fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: "14px", display: "flex", alignItems: "center", gap: "4px", textDecoration: "none" }}>
+              See all
+              <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_forward</span>
+            </Link>
           </div>
+        </div>
 
-          {loading || !location ? (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "var(--sp-4)" }}>
-              {Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)}
-            </div>
-          ) : restaurants.length > 0 ? (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: "var(--sp-4)" }}>
-              {restaurants.map((res, i) => {
-                const [resLng, resLat] = res.autoLocation.coordinates;
-                const distance = getDistanceKm(location.latitude, location.longitude, resLat, resLng);
-                return (
-                  <div key={res._id} style={{ animation: `fadeUp .4s var(--ease-out) ${i * 50}ms both` }}>
-                    <RestaurantCard id={res._id} name={res.name} image={res.image ?? ""} distance={`${distance}`} isOpen={res.isOpen} />
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div style={{ textAlign: "center", padding: "var(--sp-20) 0" }}>
-              <div style={{ fontSize: "3rem", marginBottom: "var(--sp-4)" }}>🍽️</div>
-              <h3 style={{ fontWeight: 700, marginBottom: "var(--sp-2)" }}>No restaurants found</h3>
-              <p style={{ color: "var(--text-3)", fontSize: ".875rem" }}>
-                {search ? `No results for "${search}". Try a different search.` : "No restaurants are available near you right now."}
-              </p>
-              {search && (
-                <button onClick={() => { setSearchInput(""); setSearchParams({}); }} className="btn btn-ghost" style={{ marginTop: "var(--sp-6)" }}>
-                  Show all restaurants
-                </button>
-              )}
-            </div>
-          )}
-        </section>
-      </div>
-    </div>
+        {loading || !location ? (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "var(--sp-6)" }}>
+            {Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)}
+          </div>
+        ) : restaurants.length > 0 ? (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "var(--sp-6)" }}>
+            {restaurants.map((res, i) => {
+              const [resLng, resLat] = res.autoLocation.coordinates;
+              const distance = getDistanceKm(location.latitude, location.longitude, resLat, resLng);
+              return (
+                <div key={res._id} style={{ animation: `fadeUp .4s var(--ease-out) ${i * 50}ms both` }}>
+                  <RestaurantCard id={res._id} name={res.name} image={res.image ?? ""} distance={`${distance}`} isOpen={res.isOpen} />
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div style={{
+            textAlign: "center", padding: "var(--sp-16) var(--sp-4)",
+            background: "var(--surface)", borderRadius: 12,
+            border: "1px dashed var(--border)"
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 64, color: "var(--text-3)", marginBottom: "var(--sp-4)", display: "block" }}>search_off</span>
+            <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "20px", color: "var(--text-1)", marginBottom: "var(--sp-2)" }}>
+              No restaurants found
+            </p>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "var(--text-2)" }}>
+              {search ? `No results for "${search}". Try a different search term.` : "No restaurants available in your area yet."}
+            </p>
+          </div>
+        )}
+      </section>
+    </main>
   );
 };
 

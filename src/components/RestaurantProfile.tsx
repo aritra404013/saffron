@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { IRestaurant } from "../types";
 import axios from "axios";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import toast from "react-hot-toast";
 import { useAppData } from "../context/AppContext";
 

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAppData } from "../context/AppContext";
 import { useSocket } from "../context/SocketContext";
 import axios from "axios";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import toast from "react-hot-toast";
 import type { IOrder } from "../types";
 import audio from "../assets/faaah.mp3";

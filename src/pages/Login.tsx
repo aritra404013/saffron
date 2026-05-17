@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAppData } from "../context/AppContext";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import { useGoogleLogin } from "@react-oauth/google";
 import toast from "react-hot-toast";
 
@@ -53,7 +53,7 @@ const Login = () => {
             <img src="/logo.png" alt="Foodify" style={{ height: 140, objectFit: "contain" }} />
           </div>
           <div style={{ width: 40, height: 1, background: "linear-gradient(90deg, transparent, var(--gold-light), transparent)", margin: "0 auto var(--sp-6)" }} />
-          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", color: "#fff", fontSize: "clamp(1.9rem, 4vw, 2.6rem)", fontWeight: 600, lineHeight: 1.2, marginBottom: "var(--sp-3)" }}>
+          <h1 style={{ fontFamily: "'Montserrat', sans-serif", color: "#fff", fontSize: "clamp(1.9rem, 4vw, 2.6rem)", fontWeight: 600, lineHeight: 1.2, marginBottom: "var(--sp-3)" }}>
             A Culinary Journey<br />Awaits You
           </h1>
           <p style={{ color: "rgba(255,255,255,.5)", fontSize: ".9rem", lineHeight: 1.7, letterSpacing: ".01em" }}>

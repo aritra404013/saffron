@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import type { IOrder } from "../types";
 
 const statusConfig: Record<string, { label: string; color: string; bg: string }> = {
@@ -35,7 +35,7 @@ const Orders = () => {
   return (
     <div className="page-pad">
       <div className="container" style={{ maxWidth: 680 }}>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.8rem", letterSpacing: ".01em", marginBottom: "var(--sp-6)" }}>My Orders</h1>
+        <h1 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "1.8rem", letterSpacing: ".01em", marginBottom: "var(--sp-6)" }}>My Orders</h1>
 
         {loading ? (
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--sp-3)" }}>

@@ -7,7 +7,7 @@ import {
 } from "react";
 import { io, Socket } from "socket.io-client";
 import { useAppData } from "./AppContext";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 
 interface SocketContextType {
   socket: Socket | null;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAppData } from "../context/AppContext";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import { BiMapPin, BiUpload } from "react-icons/bi";
 
 interface props {

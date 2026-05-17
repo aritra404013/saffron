@@ -49,7 +49,7 @@ const FloatingCartBar = () => {
         style={{ textDecoration: "none" }}
       >
         <div style={{
-          background: "linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%)",
+          background: "linear-gradient(135deg, var(--primary) 0%, var(--primary-container) 100%)",
           borderRadius: 18,
           padding: "14px 18px",
           display: "flex",

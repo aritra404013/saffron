@@ -3,7 +3,7 @@ import { useSocket } from "../context/SocketContext";
 import { useEffect, useState } from "react";
 import type { IOrder } from "../types";
 import axios from "axios";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import UserOrderMap from "../components/UserOrderMap";
 
 const STEPS: { key: IOrder["status"]; label: string; icon: string }[] = [
@@ -83,6 +83,31 @@ const OrderPage = () => {
             {STEPS[currentStep]?.label || order.status}
           </span>
         </div>
+
+        {/* Cancelled banner */}
+        {order.status === "cancelled" && (
+          <div style={{
+            padding: "var(--sp-5)",
+            background: "linear-gradient(135deg, rgba(186,26,26,0.06) 0%, rgba(186,26,26,0.02) 100%)",
+            border: "1px solid rgba(186,26,26,0.15)",
+            borderRadius: "var(--r-xl)",
+            marginBottom: "var(--sp-4)",
+            display: "flex", alignItems: "center", gap: "var(--sp-4)",
+          }}>
+            <div style={{
+              width: 48, height: 48, borderRadius: "50%",
+              background: "rgba(186,26,26,0.1)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: "1.5rem", flexShrink: 0,
+            }}>✗</div>
+            <div>
+              <p style={{ fontWeight: 700, fontSize: "1rem", color: "var(--error)", marginBottom: 4 }}>Order Cancelled</p>
+              <p style={{ fontSize: ".82rem", color: "var(--text-3)", lineHeight: 1.4 }}>
+                This order was cancelled by the restaurant. If you were charged, a refund will be processed within 3-5 business days.
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Live status timeline */}
         <div className="card" style={{ padding: "var(--sp-5)", marginBottom: "var(--sp-4)" }}>

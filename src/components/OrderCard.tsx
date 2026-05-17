@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { IOrder } from "../types";
 import { ORDER_ACTIONS } from "../utils/orderflow";
 import axios from "axios";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import toast from "react-hot-toast";
 
 const STATUS_STYLES: Record<string, { bg: string; color: string; label: string }> = {

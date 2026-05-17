@@ -1,38 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
 
 /* ─── CSS DESIGN TOKENS ─────────────────────────────────────── */
 :root {
-  /* Foodify Brand Colors */
-  --gold:         #F5A623;
-  --gold-light:   #FFB84D;
-  --gold-pale:    #FFF3DC;
-  --gold-glow:    rgba(245,166,35,.3);
-  --crimson:      #E53935;
-  --crimson-dark: #B71C1C;
-  --crimson-light:#EF5350;
-  --ink:          #0A0A0F;
-  --ink-2:        #12121A;
-  --ink-3:        #1E1E2A;
-  --charcoal:     #111118;
-  --charcoal-2:   #1A1A24;
-  --charcoal-3:   #252530;
-  --surface:      #FFFFFF;
-  --surface-2:    #F9F9FB;
-  --surface-3:    #F2F2F6;
-  --surface-warm: #FAFAFA;
-  --border:       #E8E8EE;
-  --border-dark:  #CDCDD8;
-  --border-gold:  rgba(245,166,35,.3);
-  --text-1:       #0A0A0F;
-  --text-2:       #32323C;
-  --text-3:       #72727E;
-  --text-4:       #ADADBA;
-  --success:      #16A34A;
-  --success-bg:   #DCFCE7;
-  --warning:      #D97706;
-  --warning-bg:   #FEF3C7;
-  --error:        #DC2626;
-  --error-bg:     #FEE2E2;
+  /* Fresh & Fast Brand Colors */
+  --gold:         #a83900;       /* Primary Energetic Orange */
+  --gold-light:   #ff5a00;       /* Primary Container */
+  --gold-pale:    #ffdbcf;
+  --gold-glow:    rgba(168,57,0,.3);
+  --crimson:      #ba1a1a;       /* Error */
+  --crimson-dark: #93000a;
+  --crimson-light:#ffdad6;
+  --ink:          #271812;       /* On-Surface */
+  --ink-2:        #3e2c26;
+  --ink-3:        #5b4137;
+  --charcoal:     #271812;
+  --charcoal-2:   #3e2c26;
+  --charcoal-3:   #5b4137;
+  --surface:      #FFFFFF;       /* Pure white for cards */
+  --surface-2:    #fff8f6;       /* Background */
+  --surface-3:    #f1d4ca;       /* Surface dim */
+  --surface-warm: #fff1ec;       /* Surface container low */
+  --surface-container-high: #ffe2d9;
+  --border:       #e4beb1;       /* Outline Variant */
+  --border-dark:  #907065;       /* Outline */
+  --border-gold:  rgba(168,57,0,.3);
+  --text-1:       #271812;
+  --text-2:       #5b4137;
+  --text-3:       #907065;
+  --text-4:       #e4beb1;
+  --success:      #006d37;       /* Secondary Leaf Green */
+  --success-bg:   #7bf8a1;
+  --warning:      #735c00;       /* Accent Yellow */
+  --warning-bg:   #ffe084;
+  --error:        #ba1a1a;
+  --error-bg:     #ffdad6;
+
+  /* Stitch Design System Tokens */
+  --primary:            #a83900;
+  --on-primary:         #ffffff;
+  --primary-container:  #ff5a00;
+  --on-primary-container: #511700;
+  --secondary:          #006d37;
+  --on-secondary:       #ffffff;
+  --secondary-container:#7bf8a1;
+  --on-secondary-container: #007239;
+  --tertiary:           #735c00;
+  --tertiary-container: #cea700;
+  --outline:            #907065;
+  --outline-variant:    #e4beb1;
+  --on-surface:         #271812;
+  --on-surface-variant: #5b4137;
+  --on-background:      #271812;
+  --surface-container:  #ffe9e3;
+  --surface-container-lowest: #ffffff;
+  --inverse-surface:    #3e2c26;
 
   /* Spacing */
   --sp-1: 4px;  --sp-2: 8px;   --sp-3: 12px;  --sp-4: 16px;
@@ -40,16 +62,16 @@
   --sp-12: 48px;--sp-16: 64px; --sp-20: 80px;
 
   /* Border Radius */
-  --r-sm:  6px;  --r-md: 10px; --r-lg: 14px;
-  --r-xl:  18px; --r-2xl:24px; --r-3xl:32px; --r-full:9999px;
+  --r-sm:  4px;  --r-md: 8px; --r-lg: 12px;
+  --r-xl:  16px; --r-2xl:24px; --r-3xl:32px; --r-full:9999px;
 
   /* Shadows */
-  --shadow-sm:   0 1px 4px rgba(10,10,15,.06), 0 1px 2px rgba(10,10,15,.04);
-  --shadow-md:   0 4px 20px rgba(10,10,15,.09), 0 2px 8px rgba(10,10,15,.05);
-  --shadow-lg:   0 12px 48px rgba(10,10,15,.13), 0 4px 16px rgba(10,10,15,.07);
-  --shadow-xl:   0 24px 80px rgba(10,10,15,.18);
-  --shadow-red:  0 8px 28px rgba(229,57,53,.35);
-  --shadow-gold: 0 8px 28px rgba(245,166,35,.4);
+  --shadow-sm:   0 1px 4px rgba(45,52,70,.03), 0 1px 2px rgba(45,52,70,.02);
+  --shadow-md:   0 4px 12px rgba(45,52,70,.05);
+  --shadow-lg:   0 8px 24px rgba(45,52,70,.12);
+  --shadow-xl:   0 24px 80px rgba(45,52,70,.18);
+  --shadow-red:  0 8px 28px rgba(186,26,26,.35);
+  --shadow-gold: 0 8px 24px rgba(168,57,0,.3);
 
   /* Transitions */
   --ease:        cubic-bezier(.4,0,.2,1);
@@ -62,6 +84,26 @@
   /* Nav height */
   --nav-h: 68px;
   --bottom-nav-h: 96px;
+}
+
+/* ─── MATERIAL SYMBOLS ───────────────────────────────────────── */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
 /* ─── RESET ──────────────────────────────────────────────────── */
@@ -92,7 +134,7 @@ input, textarea, select { font-family: inherit; outline: none; }
 @media (min-width: 768px) { .page-pad { padding-bottom: var(--sp-16); } }
 
 /* ─── DISPLAY FONT ───────────────────────────────────────────── */
-.font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+.font-display { font-family: 'Montserrat', sans-serif; letter-spacing: -0.02em; }
 
 /* ─── GLASS ──────────────────────────────────────────────────── */
 .glass {
@@ -123,11 +165,11 @@ input, textarea, select { font-family: inherit; outline: none; }
 }
 .btn:active { transform: scale(.97); }
 .btn-primary {
-  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+  background: var(--gold);
   color: #fff;
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-md);
 }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(245,166,35,.5); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold); }
 .btn-dark {
   background: linear-gradient(135deg, var(--charcoal) 0%, var(--ink) 100%);
   color: #fff; box-shadow: 0 8px 28px rgba(10,10,15,.4);
@@ -139,10 +181,10 @@ input, textarea, select { font-family: inherit; outline: none; }
 }
 .btn-ghost:hover { border-color: var(--gold); color: var(--gold); background: rgba(245,166,35,.06); }
 .btn-gold {
-  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
-  color: #fff; box-shadow: var(--shadow-gold);
+  background: var(--gold);
+  color: #fff; box-shadow: var(--shadow-md);
 }
-.btn-gold:hover { transform: translateY(-1px); box-shadow: 0 14px 36px rgba(245,166,35,.5); }
+.btn-gold:hover { transform: translateY(-1px); box-shadow: var(--shadow-gold); }
 .btn-sm { padding: var(--sp-2) var(--sp-4); font-size: .8rem; }
 .btn-lg { padding: var(--sp-4) var(--sp-8); font-size: 1rem; letter-spacing: .05em; }
 .btn-icon { padding: var(--sp-2); border-radius: var(--r-md); }
@@ -151,8 +193,8 @@ input, textarea, select { font-family: inherit; outline: none; }
 /* ─── CARDS ──────────────────────────────────────────────────── */
 .card {
   background: var(--surface);
-  border-radius: var(--r-xl);
-  box-shadow: 0 2px 12px rgba(15,14,12,.06), 0 1px 3px rgba(15,14,12,.04);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
   border: 1px solid var(--border);
   overflow: hidden;
   transition: box-shadow var(--t2), transform var(--t2);
@@ -427,3 +469,14 @@ input, textarea, select { font-family: inherit; outline: none; }
   to   { transform: scale(1); opacity: 1; }
 }
 .anim-scale-in { animation: scaleIn .3s var(--ease-spring) both; }
+
+/* ─── PULSE ANIMATION (Skeleton loaders) ─────────────────────── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .4; }
+}
+
+/* ─── RESPONSIVE UTILITY ─────────────────────────────────────── */
+@media (min-width: 769px) {
+  .md-flex-row { flex-direction: row !important; }
+}

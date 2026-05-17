@@ -1,17 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
+import "material-symbols";
 import App from "./App.tsx";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { AppProvider } from "./context/AppContext.tsx";
 import "leaflet/dist/leaflet.css";
 import { SocketProvider } from "./context/SocketContext.tsx";
-import axios from "axios";
 
-export const BASE_URL = "https://baculiform-hypnotically-noah.ngrok-free.dev";
-
-// Required to bypass ngrok browser warning page on all requests
-axios.defaults.headers.common["ngrok-skip-browser-warning"] = "true";
+// Initialize axios defaults (BASE_URL now lives in config.ts)
+import "./config";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

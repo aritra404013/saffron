@@ -15,7 +15,7 @@ const OrderSuccess = () => (
         fontSize: "2.8rem", boxShadow: "0 12px 40px rgba(22,163,74,.3)",
         animation: "pop .5s var(--ease) both",
       }}>🎉</div>
-      <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "2.2rem", letterSpacing: ".01em", marginBottom: "var(--sp-3)" }}>
+      <h1 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "2.2rem", letterSpacing: ".01em", marginBottom: "var(--sp-3)" }}>
         Order Confirmed!
       </h1>
       <p style={{ color: "var(--text-3)", lineHeight: 1.7, marginBottom: "var(--sp-8)", fontSize: ".95rem" }}>

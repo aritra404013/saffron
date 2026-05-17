@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FreshFast - Food Delivery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#a83900",
+                    "tertiary-container": "#cea700",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "secondary-container": "#7bf8a1",
+                    "tertiary": "#735c00",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "secondary": "#006d37",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#5b4137",
+                    "on-secondary-fixed-variant": "#005228",
+                    "outline": "#907065",
+                    "on-background": "#271812",
+                    "primary-fixed": "#ffdbcf",
+                    "inverse-surface": "#3e2c26",
+                    "surface-tint": "#a83900",
+                    "on-primary-fixed": "#380d00",
+                    "surface-container": "#ffe9e3",
+                    "surface-dim": "#f1d4ca",
+                    "surface-container-low": "#fff1ec",
+                    "inverse-primary": "#ffb59a",
+                    "background": "#fff8f6",
+                    "tertiary-fixed": "#ffe084",
+                    "outline-variant": "#e4beb1",
+                    "inverse-on-surface": "#ffede7",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#fff8f6",
+                    "on-tertiary-fixed": "#231b00",
+                    "surface-container-high": "#ffe2d9",
+                    "tertiary-fixed-dim": "#eec209",
+                    "on-secondary-container": "#007239",
+                    "primary-container": "#ff5a00",
+                    "on-tertiary-container": "#4e3d00",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#ffb59a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#fadcd2",
+                    "secondary-fixed": "#7efba4",
+                    "surface-variant": "#fadcd2",
+                    "surface-bright": "#fff8f6",
+                    "on-surface": "#271812",
+                    "secondary-fixed-dim": "#61de8a",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#802900",
+                    "on-secondary-fixed": "#00210c",
+                    "on-primary-container": "#511700"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "xxl": "48px",
+                    "container-margin": "20px",
+                    "unit": "8px",
+                    "gutter": "16px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "label-bold": [
+                            "Inter"
+                    ],
+                    "h1": [
+                            "Montserrat"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "h3": [
+                            "Montserrat"
+                    ],
+                    "h2": [
+                            "Montserrat"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "label-bold": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "h1": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "h3": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "h2": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[style*="FILL' 1"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-[80px] md:pb-0">
+<!-- TopAppBar (Web) -->
+<header class="hidden md:flex bg-surface/90 backdrop-blur-md shadow-sm sticky w-full top-0 z-50">
+<div class="flex justify-between items-center px-container-margin py-md w-full max-w-7xl mx-auto">
+<div class="text-h3 font-h1 font-bold text-primary flex items-center gap-2">
+<span>FreshFast</span>
+</div>
+<nav class="flex items-center gap-lg">
+<a class="text-primary font-label-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors duration-200" href="#">Offers</a>
+<a class="text-on-surface-variant font-label-sm hover:text-primary transition-colors duration-200" href="#">Support</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="text-primary hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</button>
+<button class="text-primary hover:text-primary transition-colors duration-200 relative">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary font-label-sm text-[10px] w-4 h-4 rounded-full flex items-center justify-center">3</span>
+</button>
+<button class="text-primary hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover ml-sm border-2 border-surface-container" data-alt="A close up portrait of a young man with short brown hair smiling warmly. He is wearing a simple grey t-shirt. The background is a clean, out of focus light grey studio backdrop. High key lighting creates a bright, optimistic mood suitable for a modern profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM_vswh64EB9YmLIUjld5VF7KXQkb2pi-20630_aULZ8I0KWMn2q0s7TWiLVrcEkh75pyNXD11XOMYqk8cTkp6XnL0R6PIY7K0z5JgRKPdAmmAx_v8YVlGiAHEzDVdnvZJftOwxXekvdA2NxwdJzghlIM15thbKeB6Jj4cRPP3j--lCRs1mkxQf78TPzesYOAwLbbYeGbLUPSMmjGyw7qHgd_QisrQym-NuOrg3Zv9vuGF-koVyjL5M4Cf_LB-2uqhpA8QUIg4smI"/>
+</div>
+</div>
+</header>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-md pb-safe pt-sm bg-surface shadow-[0px_-4px_12px_rgba(45,52,70,0.05)] rounded-t-xl z-50">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-xs">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm mt-xs">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm mt-xs">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm mt-xs">Earnings</span>
+</a>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative bg-surface-container-high pt-xl pb-xxl px-container-margin md:py-xxl overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&amp;fit=crop&amp;w=1920&amp;q=80')] bg-cover bg-center" data-alt="A dynamic, flat lay composition of various fresh food ingredients including bright red tomatoes, vibrant green basil leaves, and artisanal breads scattered organically over a clean, textured white stone surface. The lighting is bright and even, casting soft shadows that enhance the texture. The mood is fresh, appetizing, and high-energy, aligning with a modern food delivery aesthetic."></div>
+<div class="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-xl">
+<div class="flex-1 w-full text-center md:text-left">
+<h1 class="font-h1 text-h1 text-on-background mb-lg leading-tight">Lightning fast delivery.<br/><span class="text-primary">Fresh to your door.</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-lg mx-auto md:mx-0">Discover the best food and drinks in your city, delivered in minutes.</p>
+<div class="bg-surface p-sm rounded-xl shadow-[0px_8px_24px_rgba(45,52,70,0.12)] flex flex-col md:flex-row gap-sm max-w-2xl mx-auto md:mx-0">
+<div class="flex items-center flex-1 bg-surface-container px-md rounded-lg h-12">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm" data-icon="location_on">location_on</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-on-surface font-body-md placeholder-on-surface-variant" placeholder="Enter delivery address" type="text"/>
+</div>
+<button class="bg-primary text-on-primary font-label-bold px-xl h-12 rounded-lg flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors shadow-sm whitespace-nowrap">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+                            Find Food
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Restaurants (Bento Layout) -->
+<section class="py-xxl px-container-margin max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-h2 text-h2 text-on-background">Featured Near You</h2>
+<p class="font-body-md text-on-surface-variant mt-xs">Curated spots for your cravings</p>
+</div>
+<a class="text-primary font-label-bold flex items-center gap-xs hover:underline hidden md:flex" href="#">
+                    See all
+                    <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg auto-rows-[280px]">
+<!-- Large Feature Card -->
+<div class="md:col-span-2 relative rounded-xl overflow-hidden shadow-[0px_4px_12px_rgba(45,52,70,0.05)] group cursor-pointer">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&amp;fit=crop&amp;w=800&amp;q=80')] bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A high-quality, close-up photograph of a towering artisanal smash burger on a wooden serving board. The burger features a glossy brioche bun, double beef patties with melted cheddar cheese dripping down the sides, crisp green lettuce, and vibrant red tomatoes. The background is slightly blurred with warm, high-contrast lighting highlighting the juicy texture. The overall aesthetic is appetizing, modern, and boldly colored."></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute top-md right-md bg-surface text-on-surface font-label-bold px-md py-xs rounded-full flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                        4.9
+                    </div>
+<div class="absolute bottom-md left-md right-md text-white">
+<div class="flex gap-sm mb-xs">
+<span class="bg-secondary text-on-secondary font-label-sm px-2 py-1 rounded">Open</span>
+<span class="bg-primary-container text-on-primary-container font-label-sm px-2 py-1 rounded">Best Seller</span>
+</div>
+<h3 class="font-h3 text-h3 font-bold mb-xs">Burger Joint Royale</h3>
+<p class="font-body-sm opacity-90 flex items-center gap-sm">
+<span>American • Burgers • $$$</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span> 15-25 min</span>
+</p>
+</div>
+</div>
+<!-- Regular Card 1 -->
+<div class="relative rounded-xl overflow-hidden shadow-[0px_4px_12px_rgba(45,52,70,0.05)] bg-surface flex flex-col group cursor-pointer border border-outline-variant/30 hover:shadow-[0px_8px_24px_rgba(45,52,70,0.12)] transition-shadow">
+<div class="h-[60%] relative overflow-hidden">
+<img alt="Restaurant Image" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A top-down view of a steaming, vibrant bowl of ramen sitting on a dark wooden table. The bowl is filled with rich broth, perfectly cooked noodles, slices of tender pork chashu, a soft-boiled egg with a bright orange yolk, and fresh green scallions. The lighting is moody yet bright enough to highlight the glossy textures of the soup. The aesthetic conveys authentic, high-quality Asian cuisine in a modern setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3E-BaXsmFFzPl7jWUXaOI9okb0ROw2T32vpLH1IXPXKBKTJdE-UzXVSjk3CtkJvyAXKdkhvX1ZJRAAztmqtGCXlOD5chja1RmaXJQMGaHdu4NoSSipDUWce1KDp8-jACADsq6IFPnyzaLrdZpLfXA14lur4d3m9n5HlGjQaiejYDZZrrpC6hutxWLHWbyNja4F4tLJ6p4bpSAaccFQrR-3nNRQBHyRzmVNRTG0Cmqo0EuwAqYKoSeS_1a_AhAkyepqJESoV3wH6c"/>
+<div class="absolute top-sm right-sm bg-surface text-on-surface font-label-bold px-sm py-[2px] rounded-full flex items-center gap-xs shadow-sm text-[12px]">
+<span class="material-symbols-outlined text-tertiary-container text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                            4.7
+                        </div>
+</div>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-label-bold text-[18px] text-on-surface mb-xs truncate">Sakura Ramen &amp; Sushi</h3>
+<p class="font-body-sm text-on-surface-variant truncate">Japanese • Noodles • $$</p>
+</div>
+<div class="flex items-center justify-between mt-sm">
+<span class="bg-surface-container text-on-surface font-label-sm px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="moped">moped</span> 20-35 min
+                            </span>
+<span class="text-primary font-label-bold text-[14px]">Free delivery</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

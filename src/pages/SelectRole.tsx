@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAppData } from "../context/AppContext";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import toast from "react-hot-toast";
 
 const ROLES = [
@@ -63,7 +63,7 @@ const SelectRole = () => {
         <div style={{ display: "inline-flex", alignItems: "center", marginBottom: "var(--sp-6)" }}>
           <img src="/logo.png" alt="Foodify" style={{ height: 80, objectFit: "contain" }} />
         </div>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(1.8rem, 4vw, 2.4rem)", fontWeight: 600, letterSpacing: ".01em", marginBottom: "var(--sp-3)", color: "var(--text-1)" }}>
+        <h1 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.4rem)", fontWeight: 600, letterSpacing: ".01em", marginBottom: "var(--sp-3)", color: "var(--text-1)" }}>
           How will you use Foodify?
         </h1>
         <p style={{ color: "var(--text-3)", fontSize: ".9rem" }}>Choose your role to get the best experience</p>
@@ -86,7 +86,7 @@ const SelectRole = () => {
             onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 2px 12px rgba(15,14,12,.06)"; }}
           >
             <div style={{ width: 56, height: 56, borderRadius: "var(--r-lg)", background: r.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.8rem", marginBottom: "var(--sp-5)" }}>{r.icon}</div>
-            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: "1.3rem", marginBottom: "var(--sp-2)", color: "var(--text-1)" }}>{r.title}</h3>
+            <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 700, fontSize: "1.3rem", marginBottom: "var(--sp-2)", color: "var(--text-1)" }}>{r.title}</h3>
             <p style={{ fontSize: ".85rem", color: "var(--text-3)", lineHeight: 1.6 }}>{r.desc}</p>
             <div style={{ marginTop: "var(--sp-5)", display: "flex", alignItems: "center", gap: "var(--sp-1)", color: r.accent, fontWeight: 700, fontSize: ".82rem", letterSpacing: ".04em", textTransform: "uppercase" }}>
               Get started →

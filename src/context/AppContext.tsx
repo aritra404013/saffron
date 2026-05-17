@@ -6,7 +6,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { BASE_URL } from "../main";
+import { BASE_URL } from "../config";
 import type { AppContextType, ICart, LocationData, User } from "../types";
 import { Toaster } from "react-hot-toast";
 
