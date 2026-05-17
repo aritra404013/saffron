@@ -304,7 +304,7 @@ const RestaurantEarnings = ({ restaurantId }: Props) => {
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column" }}>
-              {recentActivity.map((order, i) => {
+              {recentActivity.map((order) => {
                 const isDelivered = order.status === "delivered";
                 const timeAgo = getTimeAgo(new Date(order.updatedAt));
                 return (
