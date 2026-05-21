@@ -14,7 +14,30 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js');
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            // Proactively check for service worker updates on page load
+            registration.update();
+
+            // Check for updates when the window gets focus
+            window.addEventListener('focus', () => {
+              registration.update();
+            });
+
+            // Listen for new service worker installation
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    // New service worker has replaced the old one, reload the page
+                    window.location.reload();
+                  }
+                });
+              }
+            });
+          }).catch(err => {
+            console.error('Service worker registration failed:', err);
+          });
         });
       }
     </script>

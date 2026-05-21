@@ -15,13 +15,13 @@ import toast from "react-hot-toast";
 type Tab = "dashboard" | "orders" | "menu" | "earnings" | "analytics" | "settings" | "help";
 
 const NAV_ITEMS: { key: Tab; icon: string; label: string }[] = [
-  { key: "dashboard",  icon: "dashboard",       label: "Dashboard" },
-  { key: "orders",     icon: "restaurant_menu",  label: "Orders" },
-  { key: "menu",       icon: "edit_note",        label: "Menu Editor" },
-  { key: "earnings",   icon: "payments",         label: "Earnings" },
-  { key: "analytics",  icon: "trending_up",      label: "Analytics" },
-  { key: "settings",   icon: "settings",         label: "Settings" },
-  { key: "help",       icon: "help",             label: "Help Center" },
+  { key: "dashboard", icon: "dashboard", label: "Dashboard" },
+  { key: "orders", icon: "restaurant_menu", label: "Orders" },
+  { key: "menu", icon: "edit_note", label: "Menu Editor" },
+  { key: "earnings", icon: "payments", label: "Earnings" },
+  { key: "analytics", icon: "trending_up", label: "Analytics" },
+  { key: "settings", icon: "settings", label: "Settings" },
+  { key: "help", icon: "help", label: "Help Center" },
 ];
 
 const Restaurant = () => {
@@ -349,8 +349,8 @@ const Restaurant = () => {
                 </p>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "var(--sp-3)" }}>
                   {[
-                    { icon: "mail", title: "Email Support", desc: "support@foodify.com" },
-                    { icon: "phone", title: "Phone Support", desc: "+91 1800-XXX-XXXX" },
+                    { icon: "mail", title: "Email Support", desc: "support@areswebsolution.com" },
+                    { icon: "phone", title: "Phone Support", desc: "+91 8918515757" },
                     { icon: "chat", title: "Live Chat", desc: "Available 24/7" },
                     { icon: "article", title: "Knowledge Base", desc: "Browse FAQs & guides" },
                   ].map(item => (
